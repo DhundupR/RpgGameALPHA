@@ -15,8 +15,6 @@ public class TestingTurnBased {
             slime.slimeBattle(player,slime);
             System.out.println("Player's Health:" + player.getHealth());
             player.stat();
-
-
         }
 
 
