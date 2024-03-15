@@ -3,13 +3,27 @@ public class Slime extends Entity{
         super(10,1,100);
     }
     public void buff(){
-        setAtk(atk*2);
-        setMaxHealth(maxHealth*2);
+        setAtk(getAtk()*2);
+        setMaxHealth(getMaxHealth()*2);
     }
     public void regen(){
-        health+=(maxHealth-health)/2;
-        if (health>maxHealth){
-            health=maxHealth;
+        setHealth(getHealth()+(getMaxHealth()-getHealth()/2));
+        if (getHealth()>getMaxHealth()){
+            setHealth(getMaxHealth());
+        }
+    }
+    public void slimeBattle(Player player, Slime slime){
+        if(slime.getHealth()>slime.getHealth()/2){
+            slime.buff();
+            System.out.println("Slime buffed");
+        }
+        else if(slime.getHealth()< slime.getMaxHealth()/4){
+            slime.regen();
+            System.out.println("Slime regen");
+        }
+        else{
+            player.damageTaken(slime.baseAttack());
+            System.out.println("Slime attack");
         }
     }
 }
