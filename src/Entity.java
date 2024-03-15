@@ -1,8 +1,8 @@
 public class Entity {
-    public int health;
-    public int maxHealth;
-    public int atk;
-    public int criticalChance;
+    private int health;
+    private int maxHealth;
+    private int atk;
+    private int criticalChance;
     public Entity(int maxHealth, int atk,int criticalChance){
         this.health=maxHealth;
         this.maxHealth=maxHealth;
@@ -42,6 +42,10 @@ public class Entity {
             health=0;
         }
     }
+    public void battle(){
+
+    }
+
 
 
 
