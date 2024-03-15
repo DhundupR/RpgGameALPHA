@@ -13,7 +13,7 @@ public class Slime extends Entity{
         }
     }
     public void slimeBattle(Player player, Slime slime){
-        if(slime.getHealth()>slime.getHealth()/2){
+        if((slime.getHealth()>slime.getHealth()/2)&&(slime.getMaxHealth()<500)){
             slime.buff();
             System.out.println("Slime buffed");
         }
