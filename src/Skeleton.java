@@ -17,7 +17,9 @@ public class Skeleton extends Entity{
                 player.damageTaken(counter);
                 System.out.println("countered");
             }
-            System.out.println("Counter failed");
+            else{
+                System.out.println("counter Failed");
+            }
         }
         else{
             player.damageTaken(baseAttack());

@@ -10,12 +10,12 @@ public class TestingTurnBased {
 
         slime.stat();
         int turn = 1;
-        while((skeleton.getHealth()>0)&&(player.getHealth()>0)){
+        while((slime.getHealth()>=0)&&(player.getHealth()>=0)){
             System.out.println("Turn:" + turn);
-            skeleton.damageTaken(player.baseAttack());
-            System.out.println("Skeleton's Health:" + skeleton.getHealth());
-            skeleton.stat();
-            skeleton.skeletonBattle(player,skeleton);
+            player.battleMob(slime);
+            System.out.println("slime's Health:" + slime.getHealth());
+            slime.stat();
+            slime.slimeBattle(player,slime);
             System.out.println("Player's Health:" + player.getHealth());
             player.stat();
             turn++;

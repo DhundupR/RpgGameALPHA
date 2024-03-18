@@ -1,7 +1,9 @@
+import java.util.Scanner;
 public class Player extends Entity {
     int killCount;
     int levelUpRequirement;
     int level;
+    Scanner scan = new Scanner(System.in);
 
     public Player(){
         super(100,5,10);
@@ -19,6 +21,17 @@ public class Player extends Entity {
     }
     public void killCountIncrease(){
         killCount++;
+    }
+    public void battleMob(Entity entity){
+        System.out.println("Choose your move");
+        System.out.println("1.Basic Attack");
+        int choice = scan.nextInt();
+        if(choice == 1){
+            entity.damageTaken(baseAttack());
+        }
+        if(choice ==2){
+            entity.damageTaken(100000);
+        }
     }
 
 

@@ -42,7 +42,11 @@ public class Entity {
             health=0;
         }
     }
-    public void battle(){
+    public void battle(Player player,Entity entity){
+        if(entity instanceof Slime){
+            player.battleMob(entity);
+            ((Slime) entity).slimeBattle(player,(Slime)entity);
+        }
 
     }
 
