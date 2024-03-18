@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
-        g2.setColor(Color.white);
+
         g2.fillRect(playerX,playerY,tileSize,tileSize);
         g2.dispose();
 
@@ -55,6 +55,23 @@ public class GamePanel extends JPanel implements Runnable {
         }else if(move.rightPressed == true){
             playerX += playerSpeed;
         }
+
+        if(playerX < 0){
+            playerX += playerSpeed;
+        }
+        if(playerX > screenWidth - tileSize){
+            playerX -= playerSpeed;
+        }
+
+        if(playerY < 0){
+            playerY += playerSpeed;
+        }
+        if(playerY > screenHeight- tileSize){
+            playerY -= playerSpeed;
+        }
+
+
+
 
     }
 

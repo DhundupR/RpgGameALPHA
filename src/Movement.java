@@ -11,7 +11,11 @@ public class Movement  implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        //never used not really needed for this game
+        int code = e.getKeyCode();
+        if(code == KeyEvent.VK_X){
+            //use item
+
+        }
     }
 
     @Override
