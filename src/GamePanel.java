@@ -1,7 +1,6 @@
 
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.Color;
+import java.awt.*;
 
 public class GamePanel extends JPanel {
     final int origTileSize = 16;
@@ -12,6 +11,8 @@ public class GamePanel extends JPanel {
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
+    TileManager manager = new TileManager(this);
+
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
@@ -19,5 +20,15 @@ public class GamePanel extends JPanel {
 
 
     }
+
+    public void paintingComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        manager.draw(g2);
+        g2.dispose();
+
+    }
+
+
 
 }
