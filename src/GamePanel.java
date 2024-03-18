@@ -11,7 +11,11 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
+
+
     Movement move = new Movement();
+    MainCharacter joe = new MainCharacter(this, move);
+
     int playerX = 100; int playerY = 100; int playerSpeed= 10; //movement related
 
     double fps = 60;
@@ -32,9 +36,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
+        joe.draw(g2);
 
-        g2.fillRect(playerX,playerY,tileSize,tileSize);
-        g2.dispose();
 
     }
 
@@ -44,34 +47,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){ //dont know why its opposite
-        if(move.upPressed == true){
-            playerY -= playerSpeed;
-        }
-        else if(move.downPressed == true){
-            playerY += playerSpeed;
-        }
-        else if(move.leftPressed == true){
-            playerX -= playerSpeed;
-        }else if(move.rightPressed == true){
-            playerX += playerSpeed;
-        }
-
-        if(playerX < 0){
-            playerX += playerSpeed;
-        }
-        if(playerX > screenWidth - tileSize){
-            playerX -= playerSpeed;
-        }
-
-        if(playerY < 0){
-            playerY += playerSpeed;
-        }
-        if(playerY > screenHeight- tileSize){
-            playerY -= playerSpeed;
-        }
-
-
-
 
     }
 
@@ -90,7 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if(timeCheck > 1){
-                update();
+                joe.update();
 
                 repaint();
                 timeCheck--; //resets back to zero!
