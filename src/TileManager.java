@@ -4,21 +4,17 @@ import java.io.IOException;
 
 public class TileManager {
     GamePanel gp;
-    Tile [] tile;
+    Tile [] tile ;
 
 
     public TileManager(GamePanel gp){
         this.gp = gp;
-        tile = new[tile];
+
         getTileImage();
     }
 
     public void getTileImage(){
-        try {
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass01.png"));
-    } catch (IOException e){
-        }
+
     }
 
     public void draw(Graphics2D g2) {
