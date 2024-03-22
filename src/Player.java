@@ -36,7 +36,7 @@ public class Player extends Entity {
     public void encounter(Entity entity){
         System.out.println("Meet Sir Entity" );
         int turn = 1;
-        while((entity.getHealth()>=0)&&(getHealth()>=0)){
+        while((entity.getHealth()>0)&&(getHealth()>0)){
             System.out.println("Turn:" + turn);
             battleMob(entity);
             System.out.println("slime's Health:" + entity.getHealth());
@@ -45,6 +45,11 @@ public class Player extends Entity {
             System.out.println("Player's Health:" + getHealth());
             stat();
             turn++;
+        }
+        if(entity.getHealth()<=0){
+            System.out.println("You won");
+            killCountIncrease();
+            levelUpdater();
         }
     }
 
