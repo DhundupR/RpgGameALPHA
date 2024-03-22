@@ -41,6 +41,9 @@ public class Player extends Entity {
             battleMob(entity);
             System.out.println("slime's Health:" + entity.getHealth());
             entity.stat();
+            if(entity.getHealth()<=0){
+                break;
+            }
             entity.mobBattle(this);
             System.out.println("Player's Health:" + getHealth());
             stat();
@@ -50,6 +53,7 @@ public class Player extends Entity {
             System.out.println("You won");
             killCountIncrease();
             levelUpdater();
+            setHealth(getMaxHealth());
         }
     }
 

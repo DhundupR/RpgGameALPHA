@@ -3,7 +3,12 @@ public class TestingTurnBased {
         Player player = new Player();
         Slime slime = new Slime();
         Skeleton skeleton = new Skeleton();
-        player.encounter(slime);
+        int x =0;
+        while(x<5) {
+            player.encounter(slime);
+            x++;
+            player.stat();
+        }
 
 
     }
