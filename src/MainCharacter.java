@@ -98,7 +98,8 @@ public class MainCharacter {
             if(timeCheck > 1){
                 timeCheck--;
                 tick = 1;
-                ;
+
+
             }
 
 
@@ -123,13 +124,14 @@ public class MainCharacter {
                 timeCheck--;
                 tick = 0;
 
-            }
-
-
 
             }
 
-            g2.drawImage(image, playerX, playerY, tileSize, tileSize, null); //draws the sprite
+
+
+            }
+
+            g2.drawImage(image, playerX, playerY, 128, 128, null); //draws the sprite
         }
 
 

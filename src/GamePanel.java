@@ -13,6 +13,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 
+
+
     Movement move = new Movement();
     MainCharacter joe = new MainCharacter(this, move);
 
@@ -36,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
+        manager.draw(g2);
         joe.draw(g2);
 
 
@@ -54,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         double drawInter = 1000000000.0/fps;
+
 
         long lastTime = System.nanoTime();
         double timeCheck = 0;
