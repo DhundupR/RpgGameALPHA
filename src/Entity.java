@@ -42,9 +42,8 @@ public class Entity {
             health=0;
         }
     }
-    public void battle(){
 
-    }
+    public void mobBattle(Player player){}
 
 
 

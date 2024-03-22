@@ -1,7 +1,9 @@
+import java.util.Scanner;
 public class Player extends Entity {
     int killCount;
     int levelUpRequirement;
     int level;
+    Scanner scan = new Scanner(System.in);
 
     public Player(){
         super(100,5,10);
@@ -19,6 +21,40 @@ public class Player extends Entity {
     }
     public void killCountIncrease(){
         killCount++;
+    }
+    public void battleMob(Entity entity){
+        System.out.println("Choose your move");
+        System.out.println("1.Basic Attack");
+        int choice = scan.nextInt();
+        if(choice == 1){
+            entity.damageTaken(baseAttack());
+        }
+        if(choice ==2){
+            entity.damageTaken(100000);
+        }
+    }
+    public void encounter(Entity entity){
+        System.out.println("Meet Sir Entity" );
+        int turn = 1;
+        while((entity.getHealth()>0)&&(getHealth()>0)){
+            System.out.println("Turn:" + turn);
+            battleMob(entity);
+            System.out.println("slime's Health:" + entity.getHealth());
+            entity.stat();
+            if(entity.getHealth()<=0){
+                break;
+            }
+            entity.mobBattle(this);
+            System.out.println("Player's Health:" + getHealth());
+            stat();
+            turn++;
+        }
+        if(entity.getHealth()<=0){
+            System.out.println("You won");
+            killCountIncrease();
+            levelUpdater();
+            setHealth(getMaxHealth());
+        }
     }
 
 

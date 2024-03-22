@@ -12,17 +12,17 @@ public class Slime extends Entity{
             setHealth(getMaxHealth());
         }
     }
-    public void slimeBattle(Player player, Slime slime){
-        if((slime.getHealth()>slime.getHealth()/2)&&(slime.getMaxHealth()<500)){
-            slime.buff();
+    public void mobBattle(Player player){
+        if((getHealth()>getHealth()/2)&&(getMaxHealth()<500)){
+            buff();
             System.out.println("Slime buffed");
         }
-        else if(slime.getHealth()< slime.getMaxHealth()/4){
-            slime.regen();
+        else if(getHealth()<getMaxHealth()/4){
+            regen();
             System.out.println("Slime regen");
         }
         else{
-            player.damageTaken(slime.baseAttack());
+            player.damageTaken(baseAttack());
             System.out.println("Slime attack");
         }
     }
