@@ -19,7 +19,7 @@ public class MainCharacter {
     int tick = 0; //for the sprite specific movement file
     int playerX = 100;
     int playerY = 100;
-    int playerSpeed = 10; //movement related
+    int playerSpeed = 5; //movement related
 
     public BufferedImage up1, up2, right1, right2, left1, left2, down1, down2;
     public String direction = "u"; // (u,d,r,l)

@@ -9,11 +9,11 @@ public class Skeleton extends Entity{
         }
         return 0;
     }
-    public void skeletonBattle(Player player, Skeleton skeleton){
-        if(skeleton.getHealth()<(skeleton.getMaxHealth()/10)){
+    public void mobBattle(Player player){
+        if(getHealth()<(getMaxHealth()/10)){
             int counter = counter();
             if (counter>0){
-                skeleton.setHealth(getHealth()+player.baseAttack());
+                setHealth(getHealth()+player.baseAttack());
                 player.damageTaken(counter);
                 System.out.println("countered");
             }

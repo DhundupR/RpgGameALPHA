@@ -33,6 +33,20 @@ public class Player extends Entity {
             entity.damageTaken(100000);
         }
     }
+    public void encounter(Entity entity){
+        System.out.println("Meet Sir Entity" );
+        int turn = 1;
+        while((entity.getHealth()>=0)&&(getHealth()>=0)){
+            System.out.println("Turn:" + turn);
+            battleMob(entity);
+            System.out.println("slime's Health:" + entity.getHealth());
+            entity.stat();
+            entity.mobBattle(this);
+            System.out.println("Player's Health:" + getHealth());
+            stat();
+            turn++;
+        }
+    }
 
 
 
