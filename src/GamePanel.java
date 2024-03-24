@@ -38,7 +38,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
+
         manager.draw(g2);
+
         joe.draw(g2);
 
 

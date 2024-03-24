@@ -17,9 +17,9 @@ public class MainCharacter {
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
     int tick = 0; //for the sprite specific movement file
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 5; //movement related
+    int playerX = 64;
+    int playerY = 64;
+    int playerSpeed = 4; //movement related
 
     public BufferedImage up1, up2, right1, right2, left1, left2, down1, down2;
     public String direction = "u"; // (u,d,r,l)
@@ -50,17 +50,18 @@ public class MainCharacter {
             playerX += playerSpeed;
         }
 
-        if (playerX < 0) {
+        if (playerX < 10-gp.tileSize) {
             playerX += playerSpeed;
+            System.out.println(playerY);
         }
-        if (playerX > screenWidth - tileSize) {
+        if (playerX > screenWidth-tileSize  ) {
             playerX -= playerSpeed;
         }
 
-        if (playerY < 0) {
+        if (playerY < 10-gp.tileSize) {
             playerY += playerSpeed;
         }
-        if (playerY > screenHeight - tileSize) {
+        if (playerY > screenHeight-tileSize ) {
             playerY -= playerSpeed;
         }
     }
