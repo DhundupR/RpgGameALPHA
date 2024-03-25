@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
     Movement move = new Movement();
     MainCharacter joe = new MainCharacter(this, move);
 
-    int playerX = 100; int playerY = 100; int playerSpeed= 10; //movement related
+
 
     double fps = 60;
     Thread gameThread; //Keeps the image running and has uses later like reset screen and other stuff.
@@ -42,20 +42,19 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void npc() {
         JLabel label = new JLabel();
-        ImageIcon icon = new ImageIcon();
-        Image image = null;
-        try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/PlayerImage/imagesPlayer/Npc.png")));
-        } catch (IOException e) {
+        ImageIcon icon = new ImageIcon("src/PlayerImage/imagesPlayer/Npc.png");
 
-        }
-        icon.setImage(image);
+
+        Image img = icon.getImage();
+        Image scaledImage = img.getScaledInstance(500,500,Image.SCALE_SMOOTH);
+        ImageIcon scaled = new ImageIcon (scaledImage);
+
 
 
 
 
         label.setIcon(icon);
-        label.setVerticalAlignment(JLabel.CENTER);
+
 
         label.setBounds(screenWidth / 2, screenHeight, 350, 350);
         label.setSize(1000, 300);
@@ -63,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         this.setVisible(true);
         this.add(label);
+
     }
 
     public void paintComponent(Graphics g){
@@ -70,9 +70,12 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
 
         manager.draw(g2);
+
+
         npc();
 
         joe.draw(g2);
+
 
 
     }
