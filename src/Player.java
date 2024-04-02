@@ -1,16 +1,23 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Player extends Entity {
-    int killCount;
-    int levelUpRequirement;
-    int level;
+    private int killCount;
+    private int levelUpRequirement;
+    private int level;
     Scanner scan = new Scanner(System.in);
+    private ArrayList<String> inventory;
 
     public Player(){
         super(100,5,10);
         this.killCount=0;
         this.level = 1;
         this.levelUpRequirement=1;
+        this.inventory=new ArrayList<String>();
     }
+    public ArrayList<String> getInventory(){
+        return inventory;
+    }
+
     public void levelUpdater(){
         if(levelUpRequirement<=killCount){
             setHealth(getHealth()+10*level);
@@ -54,6 +61,7 @@ public class Player extends Entity {
             killCountIncrease();
             levelUpdater();
             setHealth(getMaxHealth());
+            mobDrop(this,entity);
         }
     }
 

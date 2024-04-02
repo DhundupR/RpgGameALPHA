@@ -1,7 +1,8 @@
 public class Slime extends Entity{
     public Slime(){
-        super(10,1,100);
+        super(10,1,100,"slime");
     }
+
     public void buff(){
         setAtk(getAtk()*2);
         setMaxHealth(getMaxHealth()*2);

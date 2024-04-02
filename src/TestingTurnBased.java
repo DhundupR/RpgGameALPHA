@@ -5,10 +5,11 @@ public class TestingTurnBased {
         Skeleton skeleton = new Skeleton();
         int x =0;
         while(x<5) {
-            player.encounter(slime);
+            player.encounter(skeleton);
             x++;
             player.stat();
         }
+        System.out.println(player.getInventory());
 
 
     }
