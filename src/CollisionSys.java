@@ -1,26 +1,35 @@
 public class CollisionSys {
     private GamePanel gp;
     public int tile1,tile2;
+
+    public int left,right,top,bot;public boolean til1 = false, til2 = false;
+
+    public String dir = "";
+
+    public int x[][];
+
+
     public CollisionSys(GamePanel gp){
         this.gp = gp;
     }
 
 
     public void tileChecker(MainCharacter character){
+        dir = "";
 
 
-
-
+        til1 = false;
+        til2 = false;
         int leftWorld = (character.playerX + character.solidArea.x);
         int rightWorld = (character.playerX + character.solidArea.x + character.solidArea.width);
         int topWorld = (character.playerY + character.solidArea.y);
         int botWorld = (character.playerY + character.solidArea.y + character.solidArea.height);
 
 
-        int left = leftWorld/ character.tileSize;
-        int right = rightWorld/character.tileSize;
-        int top = topWorld/character.tileSize;
-        int bot = botWorld/character.tileSize;
+         left = leftWorld/ character.tileSize;
+         right = rightWorld/character.tileSize;
+         top = topWorld/character.tileSize;
+         bot = botWorld/character.tileSize;
 
 
         switch (character.direction) { //chooses sprite based of the current direction () gets changes in update()
@@ -34,9 +43,12 @@ public class CollisionSys {
 
 
 
-                if(gp.manager.tile[tile1].collision == true || gp.manager.tile[tile2].collision == true ){
 
 
+
+                if(gp.manager.tile[tile1].collision == true ){character.collide = true; til1 = true; dir = "u";} if( gp.manager.tile[tile2].collision == true ){
+                    dir = "u";
+                    til2 = true;
                     character.collide = true;
                 }
                 break;
@@ -52,6 +64,8 @@ public class CollisionSys {
                 break;
             }
             case "l" -> {
+
+
                 tile1 = gp.manager.mapTile[left][top];
                 tile2= gp.manager.mapTile[left][bot];
                 if(gp.manager.tile[tile1].collision == true || gp.manager.tile[tile2].collision == true ){
