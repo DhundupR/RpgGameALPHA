@@ -56,9 +56,9 @@ public class CollisionSys {
             case "d" -> {
                 tile1 = gp.manager.mapTile[left][bot];
                 tile2= gp.manager.mapTile[right][bot];
-                if(gp.manager.tile[tile1].collision == true || gp.manager.tile[tile2].collision == true ){
-
-
+                if(gp.manager.tile[tile1].collision == true ){character.collide = true; til1 = true; dir = "d";} if( gp.manager.tile[tile2].collision == true ){
+                    dir = "d";
+                    til2 = true;
                     character.collide = true;
                 }
                 break;
@@ -68,9 +68,9 @@ public class CollisionSys {
 
                 tile1 = gp.manager.mapTile[left][top];
                 tile2= gp.manager.mapTile[left][bot];
-                if(gp.manager.tile[tile1].collision == true || gp.manager.tile[tile2].collision == true ){
-
-
+                if(gp.manager.tile[tile1].collision == true ){character.collide = true; til1 = true; dir = "l";} if( gp.manager.tile[tile2].collision == true ){
+                    dir = "l";
+                    til2 = true;
                     character.collide = true;
                 }
                 break;
@@ -78,9 +78,9 @@ public class CollisionSys {
             case "r" -> {
                 tile1 = gp.manager.mapTile[right][top];
                 tile2= gp.manager.mapTile[right][bot];
-                if(gp.manager.tile[tile1].collision == true || gp.manager.tile[tile2].collision == true ){
-
-
+                if(gp.manager.tile[tile1].collision == true ){character.collide = true; til1 = true; dir = "r";} if( gp.manager.tile[tile2].collision == true ){
+                    dir = "r";
+                    til2 = true;
                     character.collide = true;
                 }
 
