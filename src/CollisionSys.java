@@ -1,6 +1,6 @@
 public class CollisionSys {
     private GamePanel gp;
-    private int tile1,tile2;
+    public int tile1,tile2;
     public CollisionSys(GamePanel gp){
         this.gp = gp;
     }

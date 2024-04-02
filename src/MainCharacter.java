@@ -56,6 +56,8 @@ public class MainCharacter {
 
             gp.check.tileChecker(this);
 
+            gp.event.slimeInter(gp.manager.tile[gp.check.tile1]);
+
             if (collide == false) {
                 switch (direction) {
                     case "u":

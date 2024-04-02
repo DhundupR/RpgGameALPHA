@@ -33,6 +33,8 @@ public class GamePanel extends JPanel implements Runnable {
     Movement move = new Movement();
     MainCharacter joe = new MainCharacter(this, move);
 
+    public Events event = new Events(this);
+
 
     int playerX = 100; int playerY = 100; int playerSpeed= 10; //movement related
 
