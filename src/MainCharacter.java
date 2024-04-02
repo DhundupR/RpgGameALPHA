@@ -1,4 +1,4 @@
-import com.sun.tools.javac.Main;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -20,50 +20,63 @@ public class MainCharacter {
     int playerX = 64;
     int playerY = 64;
     int playerSpeed = 4; //movement related
+    public Rectangle solidArea;
+    boolean collide = false;
+
+
+
 
     public BufferedImage up1, up2, right1, right2, left1, left2, down1, down2;
-    public String direction = "u"; // (u,d,r,l)
+    public String direction = " "; // (u,d,r,l)
 
     public MainCharacter(GamePanel gp, Movement move) {
         this.gp = gp;
         this.move = move;
+        solidArea = new Rectangle(16,16,tileSize/2,tileSize/2);
         getSprite(); //initializes the Sprites
 
     }
 
-    public void setDefault() {
-
-    }
 
     public void update() {
-        if (move.upPressed == true) {
-            direction = "u";
-            playerY -= playerSpeed;
-        } else if (move.downPressed == true) {
-            direction = "d";
-            playerY += playerSpeed;
-        } else if (move.leftPressed == true) {
-            direction = "l";
-            playerX -= playerSpeed;
-        } else if (move.rightPressed == true) {
-            direction = "r";
-            playerX += playerSpeed;
+        if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true) {
+            if (move.upPressed == true) {
+                direction = "u";
+            } else if (move.downPressed == true) {
+                direction = "d";
+
+            } else if (move.leftPressed == true) {
+                direction = "l";
+
+            } else if (move.rightPressed == true) {
+                direction = "r";
+
+            }
+            collide = false;
+
+            gp.check.tileChecker(this);
+
+            if (collide == false) {
+                switch (direction) {
+                    case "u":
+                        playerY -= playerSpeed;
+                        break;
+                    case "d":
+                        playerY += playerSpeed;
+                        break;
+                    case "r":
+                        playerX += playerSpeed;
+                        break;
+                    case "l":
+                        playerX -= playerSpeed;
+                        break;
+                }
+            }
         }
 
-        if (playerX < 10-gp.tileSize) {
-            playerX += playerSpeed;
-            System.out.println(playerY);
-        }
-        if (playerX > screenWidth-tileSize  ) {
-            playerX -= playerSpeed;
-        }
 
-        if (playerY < 10-gp.tileSize) {
-            playerY += playerSpeed;
-        }
-        if (playerY > screenHeight-tileSize ) {
-            playerY -= playerSpeed;
-        }
+
+
     }
 
     public void draw(Graphics g2) {
@@ -130,10 +143,10 @@ public class MainCharacter {
 
 
 
-            }
-
-            g2.drawImage(image, playerX, playerY, 128, 128, null); //draws the sprite
         }
+
+        g2.drawImage(image, playerX, playerY, 64, 64, null); //draws the sprite
+    }
 
 
 
@@ -154,5 +167,6 @@ public class MainCharacter {
         }
     }
 }
+
 
 
