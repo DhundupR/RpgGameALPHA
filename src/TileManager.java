@@ -56,6 +56,33 @@ public class TileManager {
         }
     }
 
+    public void loadNewMap(String x){
+        try {
+            InputStream is = getClass().getResourceAsStream(x);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            int row = 0; int col = 0;
+            while(row < gp.maxScreenRow  && col < gp.maxScreenCol){
+                String line = reader.readLine();
+                while(col < gp.maxScreenCol){
+                    String numbers[] = line.split(" ");
+                    int num = Integer.parseInt(numbers[col]);
+
+
+                    mapTile[col][row] = num;
+                    col ++;
+                }
+                if(col == gp.maxScreenCol){
+                    col = 0;
+                    row++;
+                }
+            }
+            reader.close();
+        }catch (Exception e){
+
+
+        }
+    }
+
 
     public void getTileImage(){
         try {

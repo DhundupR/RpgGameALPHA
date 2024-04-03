@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     public TileManager manager = new TileManager(this);
 
 
+
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
@@ -100,8 +101,12 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
 
-
-        manager.draw(g2);
+        if(event.currentMap.equals("1")) {
+            manager.draw(g2);
+        } else {
+            manager.loadNewMap("map2.txt");
+            manager.draw(g2);
+        }
         npc();
 
 

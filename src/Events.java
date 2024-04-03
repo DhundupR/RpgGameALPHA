@@ -5,6 +5,8 @@ public class Events {
     public Scanner SCAN = new Scanner(System.in);
     public GamePanel gp;
 
+    public String currentMap = "1";
+
 
     public Events(GamePanel gp){
         this.gp = gp;
@@ -19,6 +21,7 @@ public class Events {
                 if(gp.check.til1 == true){
                     if(gp.check.dir.equals("u")){
                         gp.manager.mapTile[gp.check.left][gp.check.top] = 0;
+                        currentMap = "2";
                     }
                 }
 
