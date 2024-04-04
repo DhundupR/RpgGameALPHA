@@ -1,6 +1,6 @@
 public class Skeleton extends Entity{
     public Skeleton(){
-        super(50,5,100);
+        super(50,5,100,"bone");
     }
     public int counter() {
         int counterChance = 50;
