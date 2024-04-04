@@ -13,7 +13,7 @@ public class Events {
     }
 
     public void slimeInter(Tile tile){
-        if(tile == gp.manager.tile[1]){
+        if(tile == gp.manager.tile[1] || tile == gp.manager.tile[3]){
             System.out.println("nice");
             String x = SCAN.nextLine();
 
