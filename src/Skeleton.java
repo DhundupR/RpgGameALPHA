@@ -1,25 +1,21 @@
 public class Skeleton extends Entity{
     public Skeleton(){
-        super(50,5,100,"bone");
+        super(50,5,100,"bone","skeleton");
     }
-    public int counter() {
+    public void counter(Player player) {
         int counterChance = 50;
-        if (counterChance < ((int)(Math.random() * 100) + 1)){
-            return baseAttack();
+        if (counterChance < ((int)(Math.random() * 100) + 1)) {
+            setHealth(getHealth() + player.baseAttack());
+            player.damageTaken(player.baseAttack());
+            System.out.println("countered");
         }
-        return 0;
+        else{
+            System.out.println("counter Failed");
+        }
     }
     public void mobBattle(Player player){
-        if(getHealth()<(getMaxHealth()/10)){
-            int counter = counter();
-            if (counter>0){
-                setHealth(getHealth()+player.baseAttack());
-                player.damageTaken(counter);
-                System.out.println("countered");
-            }
-            else{
-                System.out.println("counter Failed");
-            }
+        if(getHealth()<(getMaxHealth()/10)) {
+            counter(player);
         }
         else{
             player.damageTaken(baseAttack());

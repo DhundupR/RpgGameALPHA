@@ -4,72 +4,136 @@ public class Player extends Entity {
     private int killCount;
     private int levelUpRequirement;
     private int level;
+    private int pHealth;
+    private int pAtk;
     Scanner scan = new Scanner(System.in);
     private ArrayList<String> inventory;
 
-    public Player(){
-        super(100,5,10);
-        this.killCount=0;
+    public Player() {
+        super(100, 5, 10);
+        this.pHealth = getMaxHealth();
+        this.pAtk = getAtk();
+        this.killCount = 0;
         this.level = 1;
-        this.levelUpRequirement=1;
-        this.inventory=new ArrayList<String>();
+        this.levelUpRequirement = 1;
+        this.inventory = new ArrayList<String>();
     }
-    public ArrayList<String> getInventory(){
+
+    public ArrayList<String> getInventory() {
         return inventory;
     }
 
-    public void levelUpdater(){
-        if(levelUpRequirement<=killCount){
-            setHealth(getHealth()+10*level);
-            setAtk(getAtk()+5*level);
+    public int getpAtk() {
+        return pAtk;
+    }
+
+    public int getpHealth() {
+        return pHealth;
+    }
+
+    public void setpHealth(int newPHealth) {
+        pHealth = newPHealth;
+    }
+
+    public void setpAtk(int newPAtk) {
+        pAtk = newPAtk;
+    }
+
+    public void levelUpdater() {
+        if (levelUpRequirement <= killCount) {
+            setMaxHealth((getMaxHealth()) + level * 10);
+            setHealth(getMaxHealth());
+            setAtk((getAtk()) + level * 5);
             level++;
-            levelUpRequirement*=2;
+            levelUpRequirement *= 2;
         }
     }
-    public void killCountIncrease(){
+
+    public void killCountIncrease() {
         killCount++;
     }
-    public void battleMob(Entity entity){
+    public void cleanse(){
+        setMaxHealth(getpHealth());
+        setpAtk(getpAtk());
+    }
+    public void buff(){
+        setHealth(getMaxHealth()*2);
+        setAtk(getAtk()*2);
+    }
+    public void heal(){
+        setHealth(getHealth()+getMaxHealth()/2);
+        if(getHealth()>getMaxHealth()){
+            setHealth(getMaxHealth());
+
+        }    }
+
+    public void battleMob(Entity entity) {
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
         int choice = scan.nextInt();
-        if(choice == 1){
+        if (choice == 1) {
             entity.damageTaken(baseAttack());
         }
-        if(choice ==2){
-            entity.damageTaken(100000);
+        if (choice == 2) {
+            heal();
+        }
+        if(choice==3){
+            buff();
+        }
+        if(choice==4){
+            cleanse();
         }
     }
-    public void encounter(Entity entity){
-        System.out.println("Meet Sir Entity" );
+
+
+
+
+    public void encounter(Entity entity) {
+        setpHealth(getMaxHealth());
+        setpAtk(getAtk());
+        int eHealth = entity.getMaxHealth();
+        int eAttack = entity.getAtk();
+
+        System.out.println("Meet Sir " + entity.getEntityType());
+        System.out.println("Possible Drop:" + entity.getDrop());
         int turn = 1;
-        while((entity.getHealth()>0)&&(getHealth()>0)){
+        while ((entity.getHealth() > 0) && (getHealth() > 0)) {
             System.out.println("Turn:" + turn);
+            System.out.println("-------");
             battleMob(entity);
-            System.out.println("slime's Health:" + entity.getHealth());
+            System.out.println(entity.getEntityType() + "'s stat:");
             entity.stat();
-            if(entity.getHealth()<=0){
+            System.out.println("-------");
+            if (entity.getHealth() <= 0) {
                 break;
             }
             entity.mobBattle(this);
-            System.out.println("Player's Health:" + getHealth());
+            System.out.println("Player's stat:");
             stat();
+            System.out.println("----");
             turn++;
         }
-        if(entity.getHealth()<=0){
+        if (entity.getHealth() <= 0) {
             System.out.println("You won");
+            setMaxHealth(getpHealth());
+            setHealth(getMaxHealth());
+            setAtk(getpAtk());
             killCountIncrease();
             levelUpdater();
-            setHealth(getMaxHealth());
-            mobDrop(this,entity);
+            entity.setAtk(eAttack);
+            entity.setMaxHealth(eHealth);
+            entity.setHealth(eHealth);
+            mobDrop(this, entity);
+
         }
     }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
 

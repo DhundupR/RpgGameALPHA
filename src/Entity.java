@@ -4,6 +4,7 @@ public class Entity {
     private int atk;
     private int criticalChance;
     private String drop;
+    private String entityType;
     public Entity(int maxHealth, int atk,int criticalChance){
         this.health=maxHealth;
         this.maxHealth=maxHealth;
@@ -11,12 +12,13 @@ public class Entity {
         this.criticalChance=criticalChance;
     }
 
-    public Entity(int maxHealth, int atk,int criticalChance,String drop) {
+    public Entity(int maxHealth, int atk,int criticalChance,String drop,String entityType) {
         this.health=maxHealth;
         this.maxHealth=maxHealth;
         this.atk=atk;
         this.criticalChance=criticalChance;
         this.drop=drop;
+        this.entityType=entityType;
     }
 
     public String getDrop(){
@@ -38,6 +40,9 @@ public class Entity {
     public void setCriticalChance(int newCriticalChance){criticalChance=newCriticalChance;}
     public int getMaxHealth(){return maxHealth;}
     public void setMaxHealth(int newMaxHealth){maxHealth=newMaxHealth;}
+    public String getEntityType(){
+        return entityType;
+    }
     public int baseAttack(){
         if(criticalChance<((int)(Math.random()*100)+1)){
             return getAtk()*2;
@@ -58,7 +63,7 @@ public class Entity {
 
     public void mobBattle(Player player){}
     public void mobDrop(Player player,Entity entity){
-        if((Math.random()*20)+1<=5){
+        if((Math.random()*100)+1>=20){
             player.getInventory().add(entity.getDrop());
         }
     }

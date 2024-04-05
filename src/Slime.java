@@ -1,6 +1,6 @@
 public class Slime extends Entity{
     public Slime(){
-        super(10,1,100,"slime");
+        super(10,1,100,"slime","slime");
     }
 
     public void buff(){
@@ -19,12 +19,12 @@ public class Slime extends Entity{
             System.out.println("Slime buffed");
         }
         else if(getHealth()<getMaxHealth()/4){
-            regen();
-            System.out.println("Slime regen");
-        }
-        else{
             player.damageTaken(baseAttack());
             System.out.println("Slime attack");
+        }
+        else{
+            regen();
+            System.out.println("Slime regen");
         }
     }
 }
