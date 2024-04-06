@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+
 public class Player extends Entity {
     private int killCount;
     private int levelUpRequirement;
@@ -8,6 +12,7 @@ public class Player extends Entity {
     private int pAtk;
     Scanner scan = new Scanner(System.in);
     private ArrayList<String> inventory;
+    Movement move;
 
     public Player() {
         super(100, 5, 10);
@@ -17,6 +22,7 @@ public class Player extends Entity {
         this.level = 1;
         this.levelUpRequirement = 1;
         this.inventory = new ArrayList<String>();
+        this.move=move;
     }
 
     public ArrayList<String> getInventory() {
@@ -71,7 +77,7 @@ public class Player extends Entity {
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
         int choice = scan.nextInt();
-        if (choice == 1) {
+        if (move.basicAttack1) {
             entity.damageTaken(baseAttack());
         }
         if (choice == 2) {

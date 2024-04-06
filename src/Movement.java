@@ -7,6 +7,7 @@ public class Movement  implements KeyListener {
     public boolean downPressed;
     public boolean leftPressed;
     public boolean rightPressed;
+    public boolean basicAttack1;
 
 
     @Override
@@ -23,6 +24,7 @@ public class Movement  implements KeyListener {
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
             upPressed = true;
+
         }
         if(code == KeyEvent.VK_A){
             leftPressed = true;
@@ -36,6 +38,11 @@ public class Movement  implements KeyListener {
             rightPressed = true;
 
         }
+        if(code==KeyEvent.VK_1){
+            basicAttack1=true;
+        }
+
+
 
     }
 
@@ -59,7 +66,9 @@ public class Movement  implements KeyListener {
 
         }
 
+
     }
+
 
     }
 
