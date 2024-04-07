@@ -1,5 +1,5 @@
 public class Boss extends Entity {
-    public Boss() {
+    public Boss(Events eve) {
         super(200, 20, 100, "reward?", "boss");
     }
 

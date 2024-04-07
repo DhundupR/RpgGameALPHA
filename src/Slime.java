@@ -1,6 +1,9 @@
 public class Slime extends Entity{
-    public Slime(){
+    public Events events;
+
+    public Slime(Events eve){
         super(50,1,100,"slime","slime");
+        this.events = eve;
     }
 
     public void buff(){
@@ -19,8 +22,20 @@ public class Slime extends Entity{
             System.out.println("Slime buffed");
         }
         else if(getHealth()<getMaxHealth()/4){
+            events.slimeAtk = true;
+            this.events.gp.repaint();
+            events.gp.paintComponent(events.gp.g);
+            try {
+                Thread.sleep(2 * 1000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
             player.damageTaken(baseAttack());
             System.out.println("Slime attack");
+            events.slimeAtk = false;
         }
         else{
             regen();

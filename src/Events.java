@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Events {
     Player player;
-    Slime slime = new Slime();
+    Slime slime = new Slime(this);
 
     public boolean battleOn = false;
 

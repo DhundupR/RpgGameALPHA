@@ -26,6 +26,7 @@ public class Player extends Entity {
         this.inventory = new ArrayList<String>();
         this.move=move;
         this.event = eve;
+
     }
 
     public ArrayList<String> getInventory() {
@@ -152,7 +153,7 @@ public class Player extends Entity {
 
         System.out.println("Meet Sir " + entity.getEntityType());
         System.out.println("Possible Drop:" + entity.getDrop());
-        System.out.println(entity.getHealth() + " " + getpHealth());
+
         int turn = 1;
         while ((entity.getHealth() > 0) && (getHealth() > 0)) {
 

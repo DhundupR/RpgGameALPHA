@@ -5,11 +5,13 @@ public class Entity {
     private int criticalChance;
     private String drop;
     private String entityType;
+
     public Entity(int maxHealth, int atk,int criticalChance){
         this.health=maxHealth;
         this.maxHealth=maxHealth;
         this.atk=atk;
         this.criticalChance=criticalChance;
+
     }
 
     public Entity(int maxHealth, int atk,int criticalChance,String drop,String entityType) {
@@ -19,11 +21,13 @@ public class Entity {
         this.criticalChance=criticalChance;
         this.drop=drop;
         this.entityType=entityType;
+
     }
 
     public String getDrop(){
         return drop;
     }
+
     public int getHealth(){
         return health;
     }

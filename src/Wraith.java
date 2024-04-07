@@ -1,5 +1,5 @@
 public class Wraith extends Entity{
-    public Wraith(){super(50,2,10,"dark spirit","wraith");}
+    public Wraith(Events eve){super(50,2,10,"dark spirit","wraith");}
     public void debuffAtk(Player player){
         player.setAtk(player.getAtk()/2);
     }
