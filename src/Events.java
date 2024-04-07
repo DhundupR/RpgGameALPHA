@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Events {
-    Player player = new Player();
+    Player player;
     Slime slime = new Slime();
 
 
@@ -13,6 +13,7 @@ public class Events {
 
     public Events(GamePanel gp){
         this.gp = gp;
+        player = new Player(gp.move);
     }
 
     public void slimeInter(Tile tile){

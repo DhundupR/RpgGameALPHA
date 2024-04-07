@@ -1,6 +1,6 @@
 public class TestingTurnBased {
     public static void main(String[]args){
-        Player player = new Player();
+        Player player = new Player(new Movement());
         Slime slime = new Slime();
         Skeleton skeleton = new Skeleton();
         Wraith wraith = new Wraith();

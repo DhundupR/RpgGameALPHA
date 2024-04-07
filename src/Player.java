@@ -14,7 +14,7 @@ public class Player extends Entity {
     private ArrayList<String> inventory;
     Movement move;
 
-    public Player() {
+    public Player(Movement move) {
         super(100, 5, 10);
         this.pHealth = getMaxHealth();
         this.pAtk = getAtk();
