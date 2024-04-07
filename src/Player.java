@@ -78,7 +78,14 @@ public class Player extends Entity {
         }    }
 
     public void battleMob(Entity entity) {
-        event.battleOn = true;
+        if(entity.getEntityType().equals("slime")) {
+            event.battleOn = true;
+        }else if(entity.getEntityType().equals("wraith")) {
+            event.battleOn2 = true;
+            System.out.println("WOo");
+        }
+
+
         event.gp.repaint();
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
@@ -112,9 +119,17 @@ public class Player extends Entity {
         }
 
         if (choice ==1) {
-            event.playerAtk = true;
+
+            if(entity.getEntityType().equals("slime")) {
+                event.playerAtk = true;
+            }
+            if(entity.getEntityType().equals("wraith")) {
+                event.playerAtkGhost = true;
+            }
+
+
             event.gp.repaint();
-            event.gp.paintComponent(event.gp.g);
+            //event.gp.paintComponent(event.gp.g);
             try {
                 Thread.sleep(2 * 1000);
 
@@ -123,11 +138,13 @@ public class Player extends Entity {
             }
             entity.damageTaken(baseAttack());
             event.playerAtk = false;
+            event.playerAtkGhost = false;
         }
         if (choice == 2) {
             heal();
         }
         if(choice==3){
+            System.out.println("buff");
             buff();
         }
         if(choice==4){
@@ -142,8 +159,13 @@ public class Player extends Entity {
 
 
     public void encounter(Entity entity) {
-        event.battleOn = true;
-        event.gp.repaint();
+        if(entity.getEntityType().equals("slime")) {
+            event.battleOn = true;
+        }  else if(entity.getEntityType().equals("wraith")) {
+            event.battleOn2 = true;
+        }
+
+
 
 
         setpHealth(getMaxHealth());
@@ -173,8 +195,10 @@ public class Player extends Entity {
             turn++;
         }
         event.battleOn = false;
+        event.battleOn2 = false;
         if (entity.getHealth() <= 0) {
             event.battleOn = false;
+            event.battleOn2 = false;
             System.out.println("You won");
             setMaxHealth(getpHealth());
             setHealth(getMaxHealth());

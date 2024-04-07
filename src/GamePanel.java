@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    public BufferedImage battleOn1, playerAttack, slimeAttack;
+    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2;
 
 
     public CollisionSys check;
@@ -62,6 +62,11 @@ public class GamePanel extends JPanel implements Runnable {
             battleOn1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/BackgroundStartBase1.png")));
             playerAttack = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("playerAttack.png")));
             slimeAttack =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/slimeAttack.png")));
+
+            battleOn2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOneGhost.png")));
+            playerAtkGhost = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/playerAtkGhost.png")));
+            ghostAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/ghostAtk.png")));
+
         } catch (Exception e){
 
         }
@@ -83,8 +88,16 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         this.g = g;
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
-
-        if(event.slimeAtk){
+        if(event.ghostAtk){
+            g2.drawImage(ghostAtk, 0,0,1024,768,null);
+        }
+        else if(event.playerAtkGhost){
+            g2.drawImage(playerAtkGhost, 0,0,1024,768,null);
+        }
+        else if(event.battleOn2){
+            g2.drawImage(battleOn2, 0,0,1024,768,null);
+        }
+        else if(event.slimeAtk){
             g2.drawImage(slimeAttack, 0,0,1024,768,null);
         }else if(event.playerAtk) {
             g2.drawImage(playerAttack, 0,0,1024,768,null);

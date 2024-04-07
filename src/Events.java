@@ -3,11 +3,17 @@ import java.util.Scanner;
 public class Events {
     Player player;
     Slime slime = new Slime(this);
+    Wraith wraith = new Wraith(this);
 
     public boolean battleOn = false;
 
     public boolean slimeAtk = false;
     public boolean playerAtk = false;
+
+    public boolean battleOn2 = false;
+
+    public boolean ghostAtk = false;
+    public boolean playerAtkGhost = false;
 
     public Scanner SCAN = new Scanner(System.in);
     public GamePanel gp;
@@ -22,8 +28,8 @@ public class Events {
 
     public void slimeInter(Tile tile, Tile til){
         if(tile == gp.manager.tile[3] || til == gp.manager.tile[3]){
-            gp.g.drawImage(gp.battleOn1, 0,0,1024,768,null);
-            player.encounter(slime);
+
+            player.encounter(wraith);
 
 
             /*if(x.equals("o")){
@@ -86,9 +92,9 @@ public class Events {
         }
     }
 
-    public void skeletonInter(Tile tile){
+    public void ghostInter(Tile tile){
         if(tile == gp.manager.tile[1]){
-            System.out.println("WOOO");
+            player.encounter(wraith);
         }
     }
 
