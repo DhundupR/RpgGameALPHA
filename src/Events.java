@@ -4,6 +4,8 @@ public class Events {
     Player player;
     Slime slime = new Slime();
 
+    public boolean battleOn = true;
+
 
     public Scanner SCAN = new Scanner(System.in);
     public GamePanel gp;

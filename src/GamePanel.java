@@ -17,9 +17,11 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
+    public BufferedImage battleOn1;
 
 
     public CollisionSys check;
+
 
 
 
@@ -54,6 +56,12 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(move);
         this.setFocusable(true);
         check = new CollisionSys(this);
+        try {
+            battleOn1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/BackgroundStartBase1.png")));
+        } catch (Exception e){
+
+        }
+
 
 
 
@@ -101,7 +109,11 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
 
-        if(event.currentMap.equals("1")) {
+
+        if(event.battleOn) {
+            g2.drawImage(battleOn1, 0,0,1024,768,null);
+        }
+        else if(event.currentMap.equals("1")) {
             manager.draw(g2);
         } else {
             manager.loadNewMap("map2.txt");
