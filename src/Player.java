@@ -78,6 +78,7 @@ public class Player extends Entity {
 
     public void battleMob(Entity entity) {
         event.battleOn = true;
+        event.gp.repaint();
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
         System.out.println("2.heal");
@@ -104,18 +105,18 @@ public class Player extends Entity {
 
         try {
             Thread.sleep(1 * 1000);
-            System.out.println(choice);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         if (choice ==1) {
             event.playerAtk = true;
-
+            event.gp.repaint();
             event.gp.paintComponent(event.gp.g);
             try {
                 Thread.sleep(2 * 1000);
-                System.out.println(choice);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -141,7 +142,7 @@ public class Player extends Entity {
 
     public void encounter(Entity entity) {
         event.battleOn = true;
-        event.gp.paintComponent(event.gp.g);
+        event.gp.repaint();
 
 
         setpHealth(getMaxHealth());
