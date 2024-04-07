@@ -104,6 +104,9 @@ public class TileManager {
             tile[3] = new Tile();
             tile[3].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("tiles/tree02.png"))));
             tile[3].collision = true;
+            tile[4] = new Tile();
+            tile[4].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/wayPoint01.png"))));
+            tile[4].collision = true;
 
 
 

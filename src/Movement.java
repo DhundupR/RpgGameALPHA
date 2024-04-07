@@ -8,6 +8,9 @@ public class Movement  implements KeyListener {
     public boolean leftPressed;
     public boolean rightPressed;
     public boolean basicAttack1;
+    public boolean basicAttack2;
+    public boolean basicAttack3;
+    public boolean basicAttack4;
 
 
     @Override
@@ -17,6 +20,7 @@ public class Movement  implements KeyListener {
             //use item
 
         }
+
     }
 
     @Override
@@ -40,6 +44,15 @@ public class Movement  implements KeyListener {
         }
         if(code==KeyEvent.VK_1){
             basicAttack1=true;
+        }
+        if(code==KeyEvent.VK_2){
+            basicAttack2=true;
+        }
+        if(code==KeyEvent.VK_3){
+            basicAttack3=true;
+        }
+        if(code==KeyEvent.VK_4){
+            basicAttack3=true;
         }
 
 
@@ -65,6 +78,8 @@ public class Movement  implements KeyListener {
             rightPressed = false;
 
         }
+
+
 
 
     }

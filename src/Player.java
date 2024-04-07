@@ -13,6 +13,7 @@ public class Player extends Entity {
     Scanner scan = new Scanner(System.in);
     private ArrayList<String> inventory;
     Movement move;
+    String direction = " ";
 
     public Player(Movement move) {
         super(100, 5, 10);
@@ -74,10 +75,39 @@ public class Player extends Entity {
         }    }
 
     public void battleMob(Entity entity) {
+
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
-        int choice = scan.nextInt();
-        if (move.basicAttack1) {
+        System.out.println("2.heal");
+        System.out.println("3.buff");
+        try {
+            Thread.sleep(5 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int choice = 0;
+        if(move.basicAttack1 == true ){
+             choice = 1;
+
+        }
+        else if(move.basicAttack2 == true ){
+            choice = 2;
+        }
+        else if(move.basicAttack3== true ){
+            choice = 3;
+        }
+        else{
+            choice = 4;
+        }
+
+        try {
+            Thread.sleep(1 * 1000);
+            System.out.println(choice);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (choice ==1) {
             entity.damageTaken(baseAttack());
         }
         if (choice == 2) {
@@ -89,6 +119,9 @@ public class Player extends Entity {
         if(choice==4){
             cleanse();
         }
+        choice = 0;
+        move.basicAttack1 = false; move.basicAttack4 = false; move.basicAttack2 = false;
+        move.basicAttack4 = false;
     }
 
 
@@ -102,6 +135,7 @@ public class Player extends Entity {
 
         System.out.println("Meet Sir " + entity.getEntityType());
         System.out.println("Possible Drop:" + entity.getDrop());
+        System.out.println(entity.getHealth() + " " + getpHealth());
         int turn = 1;
         while ((entity.getHealth() > 0) && (getHealth() > 0)) {
             System.out.println("Turn:" + turn);

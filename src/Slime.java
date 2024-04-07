@@ -1,6 +1,6 @@
 public class Slime extends Entity{
     public Slime(){
-        super(10,1,100,"slime","slime");
+        super(50,1,100,"slime","slime");
     }
 
     public void buff(){
