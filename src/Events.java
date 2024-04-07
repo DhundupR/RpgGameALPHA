@@ -4,7 +4,7 @@ public class Events {
     Player player;
     Slime slime = new Slime();
 
-    public boolean battleOn = true;
+    public boolean battleOn = false;
 
 
     public Scanner SCAN = new Scanner(System.in);
@@ -15,11 +15,12 @@ public class Events {
 
     public Events(GamePanel gp){
         this.gp = gp;
-        player = new Player(gp.move);
+        player = new Player(gp.move,this);
     }
 
     public void slimeInter(Tile tile, Tile til){
         if(tile == gp.manager.tile[3] || til == gp.manager.tile[3]){
+            gp.g.drawImage(gp.battleOn1, 0,0,1024,768,null);
             player.encounter(slime);
 
 

@@ -13,9 +13,10 @@ public class Player extends Entity {
     Scanner scan = new Scanner(System.in);
     private ArrayList<String> inventory;
     Movement move;
+    Events event;
     String direction = " ";
 
-    public Player(Movement move) {
+    public Player(Movement move,Events eve) {
         super(100, 5, 10);
         this.pHealth = getMaxHealth();
         this.pAtk = getAtk();
@@ -24,6 +25,7 @@ public class Player extends Entity {
         this.levelUpRequirement = 1;
         this.inventory = new ArrayList<String>();
         this.move=move;
+        this.event = eve;
     }
 
     public ArrayList<String> getInventory() {
@@ -75,7 +77,7 @@ public class Player extends Entity {
         }    }
 
     public void battleMob(Entity entity) {
-
+        event.battleOn = true;
         System.out.println("Choose your move");
         System.out.println("1.Basic Attack");
         System.out.println("2.heal");
@@ -128,6 +130,10 @@ public class Player extends Entity {
 
 
     public void encounter(Entity entity) {
+        event.battleOn = true;
+        event.gp.paintComponent(event.gp.g);
+
+
         setpHealth(getMaxHealth());
         setpAtk(getAtk());
         int eHealth = entity.getMaxHealth();
@@ -138,6 +144,7 @@ public class Player extends Entity {
         System.out.println(entity.getHealth() + " " + getpHealth());
         int turn = 1;
         while ((entity.getHealth() > 0) && (getHealth() > 0)) {
+
             System.out.println("Turn:" + turn);
             System.out.println("-------");
             battleMob(entity);
@@ -153,7 +160,9 @@ public class Player extends Entity {
             System.out.println("----");
             turn++;
         }
+        event.battleOn = false;
         if (entity.getHealth() <= 0) {
+            event.battleOn = false;
             System.out.println("You won");
             setMaxHealth(getpHealth());
             setHealth(getMaxHealth());

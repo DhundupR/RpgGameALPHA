@@ -39,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     int playerX = 100; int playerY = 100; int playerSpeed= 10; //movement related
+    public Graphics2D g2;
+    public Graphics g;
 
 
     double fps = 60;
@@ -71,43 +73,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
 
-    public void npc() {
-        JLabel label = new JLabel();
-        ImageIcon icon = new ImageIcon();
-        Image image = null;
-        try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/PlayerImage/imagesPlayer/Npc.png")));
-        } catch (IOException e) {
-
-
-        }
-        icon.setImage(image);
-
-
-
-
-
-
-
-
-        label.setIcon(icon);
-        label.setVerticalAlignment(JLabel.CENTER);
-
-
-        label.setBounds(screenWidth / 2, screenHeight, 350, 350);
-        label.setSize(1000, 300);
-
-
-
-
-        this.setVisible(true);
-        this.add(label);
-    }
 
 
     public void paintComponent(Graphics g){
+
+
         super.paintComponent(g); //parent class is gamePlanner
-        Graphics2D g2 = (Graphics2D) g; //extension of graphic (has special functions)
+        this.g = g;
+         g2 = (Graphics2D) g; //extension of graphic (has special functions)
 
 
         if(event.battleOn) {
@@ -119,7 +92,7 @@ public class GamePanel extends JPanel implements Runnable {
             manager.loadNewMap("map2.txt");
             manager.draw(g2);
         }
-        npc();
+
 
 
         joe.draw(g2);
