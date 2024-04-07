@@ -6,6 +6,8 @@ public class Events {
 
     public boolean battleOn = false;
 
+    public boolean slimeAtk = false;
+    public boolean playerAtk = false;
 
     public Scanner SCAN = new Scanner(System.in);
     public GamePanel gp;

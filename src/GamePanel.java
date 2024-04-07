@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    public BufferedImage battleOn1;
+    public BufferedImage battleOn1, playerAttack, slimeAttack;
 
 
     public CollisionSys check;
@@ -60,6 +60,8 @@ public class GamePanel extends JPanel implements Runnable {
         check = new CollisionSys(this);
         try {
             battleOn1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/BackgroundStartBase1.png")));
+            playerAttack = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("playerAttack.png")));
+            slimeAttack =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/slimeAttack.png")));
         } catch (Exception e){
 
         }
@@ -82,8 +84,12 @@ public class GamePanel extends JPanel implements Runnable {
         this.g = g;
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
 
-
-        if(event.battleOn) {
+        if(event.slimeAtk){
+            g2.drawImage(slimeAttack, 0,0,1024,768,null);
+        }else if(event.playerAtk) {
+            g2.drawImage(playerAttack, 0,0,1024,768,null);
+        }
+        else if(event.battleOn) {
             g2.drawImage(battleOn1, 0,0,1024,768,null);
         }
         else if(event.currentMap.equals("1")) {

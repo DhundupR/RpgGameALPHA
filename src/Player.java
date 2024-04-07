@@ -110,7 +110,17 @@ public class Player extends Entity {
         }
 
         if (choice ==1) {
+            event.playerAtk = true;
+
+            event.gp.paintComponent(event.gp.g);
+            try {
+                Thread.sleep(2 * 1000);
+                System.out.println(choice);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             entity.damageTaken(baseAttack());
+            event.playerAtk = false;
         }
         if (choice == 2) {
             heal();
