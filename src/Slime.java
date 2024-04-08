@@ -11,6 +11,7 @@ public class Slime extends Entity{
         setMaxHealth(getMaxHealth()*2);
     }
     public void regen(){
+        System.out.println("Slime regened " + getHealth()/2 + "hp");
         setHealth(getHealth()+(getMaxHealth()-getHealth()/2));
         if (getHealth()>getMaxHealth()){
             setHealth(getMaxHealth());
@@ -39,7 +40,6 @@ public class Slime extends Entity{
         }
         else{
             regen();
-            System.out.println("Slime regen");
         }
     }
 }

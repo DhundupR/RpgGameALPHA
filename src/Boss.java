@@ -1,6 +1,11 @@
 public class Boss extends Entity {
+    private boolean phase2;
     public Boss(Events eve) {
         super(200, 20, 100, "reward?", "boss");
+        phase2=false;
+    }
+    public boolean getPhase2(){
+        return phase2;
     }
 
     public void buff() {
@@ -13,6 +18,7 @@ public class Boss extends Entity {
     }
     public void debuffAtk(Player player){
         player.setAtk(player.getAtk()/2);
+        System.out.println("Boss used debuff");
     }
 
     public void regen() {
@@ -22,6 +28,7 @@ public class Boss extends Entity {
         }
     }
     public void regenV2(){
+        System.out.println("Boss regened " + getHealth()/2 + " hp");
         setHealth(getHealth() + (getMaxHealth() - getHealth() / 2));
         if (getHealth() > getMaxHealth()) {
             setHealth(getMaxHealth());
@@ -30,16 +37,18 @@ public class Boss extends Entity {
     public void counter(Player player) {
         int counterChance = 50;
         if (counterChance < ((int) (Math.random() * 100) + 1)) {
-            setHealth(getHealth() + player.baseAttack());
-            player.damageTaken(player.baseAttack());
-            System.out.println("countered");
+            int atk = player.baseAttack();
+            setHealth(getHealth() + atk);
+            player.damageTaken(atk);
+            System.out.println("Boss Countered and dealt " + atk+ "damage");
         }
         else{
-            System.out.println("counter Failed");
+            System.out.println("Boss Counter Attempt Failed");
         }
     }
     public void lifesteal(Player player){
         int atk = baseAttack();
+        System.out.println("Boss used Lifesteal and healed for "+ atk +"hp");
         player.damageTaken(atk);
         setHealth(getHealth()+atk);
         if(getHealth()>getMaxHealth()){
@@ -56,15 +65,38 @@ public class Boss extends Entity {
         }
         else if(getHealth()>getMaxHealth()*0.6){
             counter(player);
-
-
         }
         else if(getHealth()>getMaxHealth()*0.5){
-            player.damageTaken(baseAttack());
+            int atk = baseAttack();
+            System.out.println("Boss attacked and dealt" + atk + "damage");
+            player.damageTaken(atk);
         }
         else{
             regen();
         }
+    }
+    public void bossBattle(Player player){
+        if(player.getAtk()>=4500){
+            debuffAtk(player);
+
+        }
+        else if((getHealth()>getMaxHealth()*0.8)&&(getMaxHealth()<5000)){
+            buffV2();
+            if(getMaxHealth()>5000){
+                setMaxHealth(5000);
+            }
+            System.out.println("Boss Buffed");
+        }
+        else if(getHealth()>getMaxHealth()*0.4){
+            lifesteal(player);
+        }
+        else if(getHealth()>getMaxHealth()*0.2){
+            debuffAtk(player);
+        }
+        else{
+            regenV2();
+        }
+
     }
 
 

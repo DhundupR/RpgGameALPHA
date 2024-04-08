@@ -57,6 +57,8 @@ public class Player extends Entity {
             setAtk((getAtk()) + level * 5);
             level++;
             levelUpRequirement *= 2;
+            System.out.println("You leveled up to level" + level);
+            stat();
         }
     }
 
@@ -66,10 +68,12 @@ public class Player extends Entity {
     public void cleanse(){
         setMaxHealth(getpHealth());
         setpAtk(getpAtk());
+        System.out.println("You cleansed");
     }
     public void buff(){
         setHealth(getMaxHealth()*2);
         setAtk(getAtk()*2);
+        System.out.println("You buffed");
     }
     public void heal(){
         System.out.println("You healed for"+getMaxHealth()/2);
@@ -190,18 +194,18 @@ public class Player extends Entity {
         while ((entity.getHealth() > 0) && (getHealth() > 0)) {
 
             System.out.println("Turn:" + turn);
-            System.out.println("-------");
+            System.out.println("--------------");
             battleMob(entity);
-            System.out.println(entity.getEntityType() + "'s stat:");
+            System.out.println(nameUppercase(entity.getEntityType()) + "'s stat:");
             entity.stat();
-            System.out.println("-------");
+            System.out.println("--------------");
             if (entity.getHealth() <= 0) {
                 break;
             }
             entity.mobBattle(this);
             System.out.println("Player's stat:");
             stat();
-            System.out.println("----");
+            System.out.println("-----------");
             turn++;
         }
         event.battleOn = false;

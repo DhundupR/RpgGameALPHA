@@ -5,12 +5,13 @@ public class Skeleton extends Entity{
     public void counter(Player player) {
         int counterChance = 50;
         if (counterChance < ((int)(Math.random() * 100) + 1)) {
-            setHealth(getHealth() + player.baseAttack());
-            player.damageTaken(player.baseAttack());
-            System.out.println("countered");
+            int atk = player.baseAttack();
+            setHealth(getHealth() + atk);
+            player.damageTaken(atk);
+            System.out.println("Skeleton countered and dealt " + atk +" damage");
         }
         else{
-            System.out.println("counter Failed");
+            System.out.println("Skeleton counter attempt failed");
         }
     }
     public void mobBattle(Player player){
@@ -18,8 +19,9 @@ public class Skeleton extends Entity{
             counter(player);
         }
         else{
-            player.damageTaken(baseAttack());
-            System.out.println("Base attack");
+            int atk = baseAttack();
+            player.damageTaken(atk);
+            System.out.println("Skeleton used basic attack and dealt" + atk + "damage");
         }
     }
 }
