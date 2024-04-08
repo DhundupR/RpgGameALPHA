@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2;
+    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal;
 
 
     public CollisionSys check;
@@ -66,6 +66,8 @@ public class GamePanel extends JPanel implements Runnable {
             battleOn2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOneGhost.png")));
             playerAtkGhost = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/playerAtkGhost.png")));
             ghostAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/ghostAtk.png")));
+            slimePlayerHeal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/healAnimationSlime.png")));
+
 
         } catch (Exception e){
 
@@ -90,6 +92,9 @@ public class GamePanel extends JPanel implements Runnable {
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
         if(event.ghostAtk){
             g2.drawImage(ghostAtk, 0,0,1024,768,null);
+        }
+        else if(event.slimePlayerHeal){
+            g2.drawImage(slimePlayerHeal, 0,0,1024,768,null);
         }
         else if(event.playerAtkGhost){
             g2.drawImage(playerAtkGhost, 0,0,1024,768,null);

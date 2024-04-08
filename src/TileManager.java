@@ -105,8 +105,20 @@ public class TileManager {
             tile[3].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("tiles/tree02.png"))));
             tile[3].collision = true;
             tile[4] = new Tile();
-            tile[4].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/wayPoint01.png"))));
-            tile[4].collision = true;
+            tile[4].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/grass03.png"))));
+            tile[4].collision = false;
+            tile[5] = new Tile();
+            tile[5].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/slimeTile.png"))));
+            tile[5].collision = false;
+            tile[6] = new Tile();
+            tile[6].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/wayPoint01.png"))));
+            tile[6].collision = true;
+            tile[7] = new Tile();
+            tile[7].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/wayPoint2.png"))));
+            tile[7].collision = true;
+            tile[8] = new Tile();
+            tile[8].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/ghost.png"))));
+            tile[8].collision = true;
 
 
 

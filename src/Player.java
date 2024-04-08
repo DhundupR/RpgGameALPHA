@@ -135,13 +135,28 @@ public class Player extends Entity {
 
         }
         else if(move.basicAttack2 == true){
-            if(canHeal){
+            //if(canHeal){
+                if(entity.getEntityType().equals("slime")) {
+                    event.slimePlayerHeal = true;
+                }
+                event.gp.repaint();
+
+
+                try {
+                    Thread.sleep(2 * 1000);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 heal();
-            }
-            else{
+
+                event.slimePlayerHeal = false;
+           // }
+            //else{
                 System.out.println("You haven't unlocked this move yet");
                 battleMob(entity);
-            }
+           // }
         }
         else if(move.basicAttack3== true ){
             if(canBuff){
@@ -237,6 +252,7 @@ public class Player extends Entity {
             event.battleOn = false;
             event.battleOn2 = false;
             System.out.println("You won");
+
             setMaxHealth(getpHealth());
             setHealth(getMaxHealth());
             setAtk(getpAtk());

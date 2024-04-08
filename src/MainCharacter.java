@@ -58,6 +58,8 @@ public class MainCharacter {
             gp.check.tileChecker(this);
 
             gp.event.slimeInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
+            gp.event.wayPoint01Inter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
+            gp.event.ghostInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
 
             if (collide == false) {
                 switch (direction) {

@@ -2,7 +2,7 @@ public class Slime extends Entity{
     public Events events;
 
     public Slime(Events eve){
-        super(50,1,100,"Slime","slime");
+        super(1,1,100,"Slime","slime");
         this.events = eve;
     }
 
