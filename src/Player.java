@@ -128,7 +128,7 @@ public class Player extends Entity {
                 e.printStackTrace();
             }
             int atk = baseAttack();
-            System.out.println("You dealt" + atk +" damage");
+            System.out.println("You dealt " + atk +" damage");
             entity.damageTaken(atk);
             event.playerAtk = false;
             event.playerAtkGhost = false;
@@ -193,17 +193,16 @@ public class Player extends Entity {
 
         int turn = 1;
         while ((entity.getHealth() > 0) && (getHealth() > 0)) {
-
+            entity.mobBattle(this);
             System.out.println("Turn:" + turn);
             System.out.println("--------------");
             battleMob(entity);
             System.out.println(nameUppercase(entity.getEntityType()) + "'s stat:");
             entity.stat();
-            System.out.println("--------------");k
+            System.out.println("--------------");
             if (entity.getHealth() <= 0) {
                 break;
             }
-            entity.mobBattle(this);
             System.out.println("Player's stat:");
             stat();
             System.out.println("-----------");
