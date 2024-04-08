@@ -112,7 +112,6 @@ public class Player extends Entity {
         }
         int choice = 0;
         if(move.basicAttack1 == true){
-
             if(entity.getEntityType().equals("slime")) {
                 event.playerAtk = true;
             }
@@ -128,7 +127,9 @@ public class Player extends Entity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            entity.damageTaken(baseAttack());
+            int atk = baseAttack();
+            System.out.println("You dealt" + atk +" damage");
+            entity.damageTaken(atk);
             event.playerAtk = false;
             event.playerAtkGhost = false;
 
@@ -198,7 +199,7 @@ public class Player extends Entity {
             battleMob(entity);
             System.out.println(nameUppercase(entity.getEntityType()) + "'s stat:");
             entity.stat();
-            System.out.println("--------------");
+            System.out.println("--------------");k
             if (entity.getHealth() <= 0) {
                 break;
             }
