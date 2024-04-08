@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -71,13 +72,18 @@ public class Player extends Entity {
         setAtk(getAtk()*2);
     }
     public void heal(){
+        System.out.println("You healed for"+getMaxHealth()/2);
         setHealth(getHealth()+getMaxHealth()/2);
         if(getHealth()>getMaxHealth()){
             setHealth(getMaxHealth());
+            System.out.println("Your health point  is at it's limit");
 
-        }    }
+        }
+    }
 
     public void battleMob(Entity entity) {
+        boolean canHeal=moveRequirementChecker("slime");
+        boolean canBuff = moveRequirementChecker("bone");
         if(entity.getEntityType().equals("slime")) {
             event.battleOn = true;
         }else if(entity.getEntityType().equals("wraith")) {
@@ -88,37 +94,20 @@ public class Player extends Entity {
 
         event.gp.repaint();
         System.out.println("Choose your move");
-        System.out.println("1.Basic Attack");
-        System.out.println("2.heal");
-        System.out.println("3.buff");
+        System.out.println("1)Basic Attack");
+        if(canHeal){
+            System.out.println("2)Healing");
+        }
+        if(canBuff){
+            System.out.println("3)buff");
+        }
         try {
             Thread.sleep(5 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         int choice = 0;
-        if(move.basicAttack1 == true ){
-             choice = 1;
-
-        }
-        else if(move.basicAttack2 == true ){
-            choice = 2;
-        }
-        else if(move.basicAttack3== true ){
-            choice = 3;
-        }
-        else{
-            choice = 4;
-        }
-
-        try {
-            Thread.sleep(1 * 1000);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        if (choice ==1) {
+        if(move.basicAttack1 == true){
 
             if(entity.getEntityType().equals("slime")) {
                 event.playerAtk = true;
@@ -126,7 +115,6 @@ public class Player extends Entity {
             if(entity.getEntityType().equals("wraith")) {
                 event.playerAtkGhost = true;
             }
-
 
             event.gp.repaint();
             //event.gp.paintComponent(event.gp.g);
@@ -139,14 +127,40 @@ public class Player extends Entity {
             entity.damageTaken(baseAttack());
             event.playerAtk = false;
             event.playerAtkGhost = false;
+
         }
-        if (choice == 2) {
-            heal();
+        else if(move.basicAttack2 == true){
+            if(canHeal){
+                heal();
+            }
+            else{
+                System.out.println("You haven't unlocked this move yet");
+                battleMob(entity);
+            }
         }
-        if(choice==3){
-            System.out.println("buff");
-            buff();
+        else if(move.basicAttack3== true ){
+            if(canBuff){
+                buff();
+            }
+            else{
+                System.out.println("You haven't unlocked this move yet");
+                battleMob(entity);
+            }
         }
+        else{
+            choice = 4;
+        }
+
+        try {
+            Thread.sleep(1 * 1000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         if(choice==4){
             cleanse();
         }
@@ -164,16 +178,12 @@ public class Player extends Entity {
         }  else if(entity.getEntityType().equals("wraith")) {
             event.battleOn2 = true;
         }
-
-
-
-
         setpHealth(getMaxHealth());
         setpAtk(getAtk());
         int eHealth = entity.getMaxHealth();
         int eAttack = entity.getAtk();
 
-        System.out.println("Meet Sir " + entity.getEntityType());
+        System.out.println("Meet Sir " + nameUppercase(entity.getEntityType()));
         System.out.println("Possible Drop:" + entity.getDrop());
 
         int turn = 1;
@@ -211,6 +221,17 @@ public class Player extends Entity {
             mobDrop(this, entity);
 
         }
+    }
+    public boolean moveRequirementChecker(String drop){
+        for(int i =0;i<inventory.size();i++){
+            if(inventory.get(i).equals(drop)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public String nameUppercase(String name){
+        return name.substring(0,1).toUpperCase()+name.substring(1);
     }
 }
 
