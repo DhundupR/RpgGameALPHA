@@ -92,7 +92,10 @@ public class Player extends Entity {
             event.battleOn = true;
         }else if(entity.getEntityType().equals("wraith")) {
             event.battleOn2 = true;
-            System.out.println("WOo");
+
+        }else if(entity.getEntityType().equals("skeleton")) {
+            event.battleOn3 = true;
+
         }
 
 
@@ -118,6 +121,10 @@ public class Player extends Entity {
             if(entity.getEntityType().equals("wraith")) {
                 event.playerAtkGhost = true;
             }
+            if(entity.getEntityType().equals("skeleton")) {
+                event.playerAtkSkele = true;
+            }
+
 
             event.gp.repaint();
             //event.gp.paintComponent(event.gp.g);
@@ -132,6 +139,7 @@ public class Player extends Entity {
             entity.damageTaken(atk);
             event.playerAtk = false;
             event.playerAtkGhost = false;
+            event.playerAtkSkele = false;
 
         }
         else if(move.basicAttack2 == true){
@@ -139,6 +147,12 @@ public class Player extends Entity {
                 if(entity.getEntityType().equals("slime")) {
                     event.slimePlayerHeal = true;
                 }
+            if(entity.getEntityType().equals("wraith")) {
+                event.ghostPlayerHeal = true;
+            }
+            if(entity.getEntityType().equals("skeleton")) {
+                event.skelePlayerHeal = true;
+            }
                 event.gp.repaint();
 
 
@@ -152,6 +166,8 @@ public class Player extends Entity {
                 heal();
 
                 event.slimePlayerHeal = false;
+                 event.ghostPlayerHeal = false;
+                 event.skelePlayerHeal = false;
            // }
             //else{
                 System.out.println("You haven't unlocked this move yet");
@@ -197,6 +213,8 @@ public class Player extends Entity {
             event.battleOn = true;
         }  else if(entity.getEntityType().equals("wraith")) {
             event.battleOn2 = true;
+        } else if (entity.getEntityType().equals("skeleton")) {
+            event.battleOn3 = true;
         }
         setpHealth(getMaxHealth());
         setpAtk(getAtk());
@@ -225,6 +243,7 @@ public class Player extends Entity {
         }
         event.battleOn = false;
         event.battleOn2 = false;
+        event.battleOn3 = false;
         if(entity.getHealth()<=0&&entity.getEntityType().equals("boss")&&entity.getPhase2()){
             System.out.println("The boss has awaken its true power");
             System.out.println("Phase 2 beginning");
@@ -251,6 +270,7 @@ public class Player extends Entity {
         if (entity.getHealth() <= 0) {
             event.battleOn = false;
             event.battleOn2 = false;
+            event.battleOn3 = false;
             System.out.println("You won");
 
             setMaxHealth(getpHealth());

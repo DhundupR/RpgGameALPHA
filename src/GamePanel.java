@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal;
+    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal, battleOn3,playerAtkSkele,skeleAtk,playerHealSkele, ghostHeal;
 
 
     public CollisionSys check;
@@ -62,11 +62,15 @@ public class GamePanel extends JPanel implements Runnable {
             battleOn1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/BackgroundStartBase1.png")));
             playerAttack = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("playerAttack.png")));
             slimeAttack =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/slimeAttack.png")));
-
+            ghostHeal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/ghostHeal.png")));
             battleOn2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOneGhost.png")));
             playerAtkGhost = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/playerAtkGhost.png")));
             ghostAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/ghostAtk.png")));
             slimePlayerHeal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/healAnimationSlime.png")));
+            battleOn3 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOnSkele.png")));
+            playerAtkSkele = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/playerAtkSkele.png")));
+            skeleAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/skeleAtk.png")));
+            playerHealSkele =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/skeleHeal.png")));
 
 
         } catch (Exception e){
@@ -90,6 +94,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         this.g = g;
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
+
         if(event.ghostAtk){
             g2.drawImage(ghostAtk, 0,0,1024,768,null);
         }

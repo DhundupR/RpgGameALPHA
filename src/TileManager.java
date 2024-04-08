@@ -120,6 +120,10 @@ public class TileManager {
             tile[8].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/ghost.png"))));
             tile[8].collision = true;
 
+            tile[9] = new Tile();
+            tile[9].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/skele.png"))));
+            tile[9].collision = true;
+
 
 
 
