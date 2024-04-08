@@ -1,11 +1,7 @@
 public class Boss extends Entity {
     private boolean phase2;
     public Boss(Events eve) {
-        super(200, 20, 100, "reward?", "boss");
-        phase2=false;
-    }
-    public boolean getPhase2(){
-        return phase2;
+        super(200, 20, 100, "reward?", "boss",false);
     }
 
     public void buff() {

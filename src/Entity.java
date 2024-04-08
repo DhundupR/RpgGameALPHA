@@ -5,6 +5,7 @@ public class Entity {
     private int criticalChance;
     private String drop;
     private String entityType;
+    private boolean phase2;
 
     public Entity(int maxHealth, int atk,int criticalChance){
         this.health=maxHealth;
@@ -23,6 +24,21 @@ public class Entity {
         this.entityType=entityType;
 
     }
+    public Entity(int maxHealth, int atk,int criticalChance,String drop,String entityType,boolean phase2) {
+        this.health=maxHealth;
+        this.maxHealth=maxHealth;
+        this.atk=atk;
+        this.criticalChance=criticalChance;
+        this.drop=drop;
+        this.entityType=entityType;
+        this.phase2=phase2;
+    }
+
+    public boolean getPhase2(){
+        return phase2;
+
+    }
+
 
     public String getDrop(){
         return drop;
@@ -66,6 +82,7 @@ public class Entity {
     }
 
     public void mobBattle(Player player){}
+    public void bossBattle(Player player){}
     public void mobDrop(Player player,Entity entity){
         if((Math.random()*100)+1>=20){
             player.getInventory().add(entity.getDrop());

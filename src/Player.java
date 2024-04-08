@@ -210,6 +210,29 @@ public class Player extends Entity {
         }
         event.battleOn = false;
         event.battleOn2 = false;
+        if(entity.getHealth()<=0&&entity.getEntityType().equals("boss")&&entity.getPhase2()){
+            System.out.println("The boss has awaken its true power");
+            System.out.println("Phase 2 beginning");
+            entity.setMaxHealth(500);
+            entity.setAtk(50);
+            entity.setHealth(500);
+            while ((entity.getHealth() > 0) && (getHealth() > 0)) {
+                entity.bossBattle(this);
+                System.out.println("Turn:" + turn);
+                System.out.println("--------------");
+                battleMob(entity);
+                System.out.println(nameUppercase(entity.getEntityType()) + "'s stat:");
+                entity.stat();
+                System.out.println("--------------");
+                if (entity.getHealth() <= 0) {
+                    break;
+                }
+                System.out.println("Player's stat:");
+                stat();
+                System.out.println("-----------");
+                turn++;
+            }
+        }
         if (entity.getHealth() <= 0) {
             event.battleOn = false;
             event.battleOn2 = false;
