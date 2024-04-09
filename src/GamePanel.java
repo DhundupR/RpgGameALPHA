@@ -94,6 +94,21 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         this.g = g;
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
+        if(event.skelePlayerHeal){
+            g2.drawImage(playerHealSkele, 0,0,1024,768,null);
+        }
+        else if(event.skeleAtk){
+            g2.drawImage(skeleAtk, 0,0,1024,768,null);
+        }
+
+        else if(event.playerAtkSkele){
+            g2.drawImage(playerAtkSkele, 0,0,1024,768,null);
+        }
+
+
+        else if(event.battleOn3){
+            g2.drawImage(battleOn3, 0,0,1024,768,null);
+        }
 
         if(event.ghostAtk){
             g2.drawImage(ghostAtk, 0,0,1024,768,null);
