@@ -278,7 +278,7 @@ public class Player extends Entity {
         event.battleOn3 = false;
         event.battleOn4Phase1 = false;
         event.battleOn4Phase2 = false;
-        if(entity.getHealth()<=0&&entity.getEntityType().equals("boss")&&entity.getPhase2()){
+        if(entity.getHealth()<=0&&entity.getEntityType().equals("boss")&&entity.getPhase2()==false){
 
             event.battleOn4Phase2 = true;
             event.gp.repaint();
