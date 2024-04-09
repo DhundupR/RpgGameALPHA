@@ -18,7 +18,7 @@ public class Wraith extends Entity{
             debuffAtk(player);
             System.out.println("Wraith used debuff");
         }
-        else if(getHealth()<getMaxHealth()/4){
+        else if(getHealth()>getMaxHealth()/4){
             int atk = baseAttack();
             player.damageTaken(atk);
             events.ghostAtk = true;
