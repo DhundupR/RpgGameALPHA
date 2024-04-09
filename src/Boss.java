@@ -2,7 +2,7 @@ public class Boss extends Entity {
     private boolean phase2;
     public Events events;
     public Boss(Events eve) {
-        super(200, 20, 100, "reward?", "boss",false);
+        super(200, 20, 99, "reward?", "boss",false);
         this.events = eve;
     }
 
@@ -20,14 +20,15 @@ public class Boss extends Entity {
     }
 
     public void regen() {
+        System.out.println("Boss regened " + (getMaxHealth() - getHealth() / 2)+ "hp");
         setHealth(getHealth() + (getMaxHealth() - getHealth() / 2));
         if (getHealth() > getMaxHealth()) {
             setHealth(getMaxHealth());
         }
     }
     public void regenV2(){
-        System.out.println("Boss regened " + getHealth()/2 + " hp");
-        setHealth(getHealth() + (getMaxHealth() - getHealth() / 2));
+        System.out.println("Boss regened " + (getMaxHealth() - getHealth()) + " hp");
+        setHealth(getHealth() + (getMaxHealth() - getHealth()));
         if (getHealth() > getMaxHealth()) {
             setHealth(getMaxHealth());
         }
@@ -121,7 +122,7 @@ public class Boss extends Entity {
             }
             System.out.println("Boss Buffed");
         }
-        else if(getHealth()>getMaxHealth()*0.4){
+        else if(getHealth()>getMaxHealth()*0.6){
             if(this.getPhase2()){
                 events.phase2Blood = true;
             } else {
@@ -137,7 +138,7 @@ public class Boss extends Entity {
             }
             lifesteal(player);
         }
-        else if(getHealth()>getMaxHealth()*0.2){
+        else if(getHealth()>getMaxHealth()*0.4){
             debuffAtk(player);
         }
         else{

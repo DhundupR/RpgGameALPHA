@@ -1,7 +1,7 @@
 public class Skeleton extends Entity{
     public Events events;
     public Skeleton(Events eve){
-        super(50,5,100,"Bone","skeleton");
+        super(150,20,100,"Bone","skeleton");
         this.events = eve;
     }
     public void counter(Player player) {

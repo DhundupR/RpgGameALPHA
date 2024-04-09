@@ -18,7 +18,7 @@ public class Player extends Entity {
     String direction = " ";
 
     public Player(Movement move,Events eve) {
-        super(1, 5000, 10);
+        super(100, 5, 10);
         this.pHealth = getMaxHealth();
         this.pAtk = getAtk();
         this.killCount = 0;
@@ -116,7 +116,10 @@ public class Player extends Entity {
             System.out.println("2)Healing");
         }
         if(canBuff){
-            System.out.println("3)buff");
+            System.out.println("3)Buff");
+        }
+        if(canCleanse){
+            System.out.println("4)Cleanse");
         }
         try {
             Thread.sleep(5 * 1000);
@@ -213,7 +216,8 @@ public class Player extends Entity {
             }
         }
         else if(move.basicAttack4){
-            choice = 4;
+            System.out.println("You cleansed");
+            cleanse();
         }
 
         try {
@@ -225,10 +229,6 @@ public class Player extends Entity {
 
 
 
-
-        if(choice==4){
-            cleanse();
-        }
         choice = 0;
         move.basicAttack1 = false; move.basicAttack4 = false; move.basicAttack2 = false;
         move.basicAttack4 = false;
@@ -261,13 +261,16 @@ public class Player extends Entity {
             entity.mobBattle(this);
             System.out.println("Turn:" + turn);
             System.out.println("--------------");
+            entity.mobBattle(this);
+            System.out.println("*****************");
             battleMob(entity);
+            System.out.println("--------------");
             System.out.println(nameUppercase(entity.getEntityType()) + "'s stat:");
             entity.stat();
-            System.out.println("--------------");
             if (entity.getHealth() <= 0) {
                 break;
             }
+            System.out.println("*****************");
             System.out.println("Player's stat:");
             stat();
             System.out.println("-----------");
