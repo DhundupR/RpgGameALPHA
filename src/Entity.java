@@ -85,6 +85,7 @@ public class Entity {
     public void bossBattle(Player player){}
     public void mobDrop(Player player,Entity entity){
         if((Math.random()*100)+1>=20){
+            System.out.println("You got " + entity.getDrop());
             player.getInventory().add(entity.getDrop());
         }
     }
