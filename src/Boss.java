@@ -1,7 +1,9 @@
 public class Boss extends Entity {
     private boolean phase2;
+    public Events events;
     public Boss(Events eve) {
         super(200, 20, 100, "reward?", "boss",false);
+        this.events = eve;
     }
 
     public void buff() {
@@ -64,12 +66,47 @@ public class Boss extends Entity {
             counter(player);
         }
         else if(getHealth()>getMaxHealth()*0.5){
+            if(this.getPhase2()){
+                events.phase2Atk = true;
+
+            } else {
+                events.phase1Atk = true;
+            }
+            events.gp.repaint();
+            try {
+                Thread.sleep(2 * 1000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             int atk = baseAttack();
             System.out.println("Boss attacked and dealt" + atk + "damage");
             player.damageTaken(atk);
+
+            events.phase1Atk = false;
+            events.phase2Atk = false;
         }
         else{
+            if(this.getPhase2()){
+                events.phase2Regen = true;
+
+            } else {
+                events.phase1Regen = true;
+            }
+            events.gp.repaint();
+
+            try {
+                Thread.sleep(2 * 1000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             regen();
+
+            events.phase1Regen = false;
+            events.phase2Regen = false;
         }
     }
     public void bossBattle(Player player){
@@ -85,6 +122,19 @@ public class Boss extends Entity {
             System.out.println("Boss Buffed");
         }
         else if(getHealth()>getMaxHealth()*0.4){
+            if(this.getPhase2()){
+                events.phase2Blood = true;
+            } else {
+                events.phase1Blood = true;
+            }
+
+            events.gp.repaint();
+            try {
+                Thread.sleep(2 * 1000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             lifesteal(player);
         }
         else if(getHealth()>getMaxHealth()*0.2){

@@ -23,7 +23,22 @@ public class Events {
     public boolean playerAtkSkele = false;
 
     public boolean battleOn3 = false;
-    public boolean battleOn4 = false;
+    public boolean battleOn4Phase1 = false;
+    public boolean battleOn4Phase2 = false;
+    public boolean phase1PlayerAtk = false;
+    public boolean phase2PlayerAtk = false;
+
+    public boolean phase1Atk = false;
+    public boolean phase2Atk = false;
+
+    public boolean phase1Regen = false;
+    public boolean phase2Regen = false;
+
+    public boolean phase1Heal = false;
+    public boolean phase2Heal = false;
+
+    public boolean phase1Blood = false;
+    public boolean phase2Blood = false;
 
     Boss bigMan = new Boss(this);
 

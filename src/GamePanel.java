@@ -17,9 +17,9 @@ public class GamePanel extends JPanel implements Runnable {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    public BufferedImage battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal, battleOn3,playerAtkSkele,skeleAtk,playerHealSkele, ghostHeal;
-
-
+    public BufferedImage battleOn4Phase1, battleOn4Phase2, battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal, battleOn3,playerAtkSkele,skeleAtk,playerHealSkele, ghostHeal;
+    public BufferedImage phase1PlayerAtk, phase2PlayerAtk, phase1Atk, phase2Atk, phase1Regen, phase2Regen, phase1Heal,phase2Heal;
+    public BufferedImage phase1Blood, phase2Blood;
     public CollisionSys check;
 
 
@@ -71,8 +71,18 @@ public class GamePanel extends JPanel implements Runnable {
             playerAtkSkele = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/playerAtkSkele.png")));
             skeleAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/skeleAtk.png")));
             playerHealSkele =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/skeleHeal.png")));
-
-
+            battleOn4Phase1 =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOn4Phase1.png")));
+            battleOn4Phase2 =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/battleOn4Phase2.png")));
+            phase1PlayerAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1PlayerAtk.png")));
+            phase2PlayerAtk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2PlayerAtk.png")));
+            phase1Atk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1Atk.png")));
+            phase2Atk =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Atk.png")));
+            phase1Regen =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1Regen.png")));
+            phase2Regen =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Regen.png")));
+            phase1Heal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1Heal.png")));
+            phase2Heal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Heal.png")));
+            phase1Blood =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1Blood.png")));
+            phase2Blood =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Blood.png")));
         } catch (Exception e){
 
         }
@@ -96,6 +106,35 @@ public class GamePanel extends JPanel implements Runnable {
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
         if(event.skelePlayerHeal){
             g2.drawImage(playerHealSkele, 0,0,1024,768,null);
+        }else if(event.phase2Heal){
+            g2.drawImage(phase2Heal, 0,0,1024,768,null);
+        }
+        else if(event.phase1Heal){
+            g2.drawImage(phase1Heal, 0,0,1024,768,null);
+        } else if(event.phase2Regen){
+            g2.drawImage(phase2Regen, 0,0,1024,768,null);
+        }
+        else if(event.phase1Regen){
+            g2.drawImage(phase1Regen, 0,0,1024,768,null);
+        }
+        else if(event.phase2Atk){
+            g2.drawImage(phase2Atk, 0,0,1024,768,null);
+        }
+        else if(event.phase1Atk){
+            g2.drawImage(phase1Atk, 0,0,1024,768,null);
+        }
+        else if(event.phase2PlayerAtk){
+            g2.drawImage(phase2PlayerAtk, 0,0,1024,768,null);
+        }
+        else if(event.phase1PlayerAtk){
+            g2.drawImage(phase1PlayerAtk, 0,0,1024,768,null);
+        }
+
+        else if(event.battleOn4Phase2){
+            g2.drawImage(battleOn4Phase2, 0,0,1024,768,null);
+        }
+        else if(event.battleOn4Phase1){
+            g2.drawImage(battleOn4Phase1, 0,0,1024,768,null);
         }
         else if(event.skeleAtk){
             g2.drawImage(skeleAtk, 0,0,1024,768,null);

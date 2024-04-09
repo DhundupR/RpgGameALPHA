@@ -61,6 +61,7 @@ public class MainCharacter {
             gp.event.ghostInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
             gp.event.skeleInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
             gp.event.wayPoint02Inter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
+            gp.event.finalBossInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
 
 
             if (collide == false) {
@@ -126,7 +127,7 @@ public class MainCharacter {
 
 
         } else {
-            System.out.println("huh");
+
             image = switch (direction) { //chooses sprite based of the current direction () gets changes in update()
 
 
