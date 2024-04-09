@@ -183,7 +183,7 @@ public class Player extends Entity {
                 battleMob(entity);
             }
         }
-        else{
+        else if(move.basicAttack4){
             choice = 4;
         }
 

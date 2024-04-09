@@ -52,7 +52,7 @@ public class Movement  implements KeyListener {
             basicAttack3=true;
         }
         if(code==KeyEvent.VK_4){
-            basicAttack3=true;
+            basicAttack4=true;
         }
 
 

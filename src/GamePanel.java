@@ -117,8 +117,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
         else if(event.currentMap.equals("1")) {
             manager.draw(g2);
-        } else {
+        } else if(event.currentMap.equals("2")){
             manager.loadNewMap("map2.txt");
+            manager.draw(g2);
+        } else {
+            manager.loadNewMap("map3.txt");
             manager.draw(g2);
         }
 
