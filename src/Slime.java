@@ -21,6 +21,9 @@ public class Slime extends Entity{
     public void mobBattle(Player player){
         if((getHealth()>getHealth()/2)&&(getMaxHealth()<500)){
             buff();
+            if (getHealth() > getMaxHealth()) {
+                setHealth(getMaxHealth());
+            }
             System.out.println("Slime buffed");
         }
         else if(getHealth()>getMaxHealth()/3){
