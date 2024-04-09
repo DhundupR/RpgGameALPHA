@@ -25,23 +25,21 @@ public class Events {
     public boolean battleOn3 = false;
 
 
-
-
     public Scanner SCAN = new Scanner(System.in);
     public GamePanel gp;
 
     public String currentMap = "1";
 
 
-    public Events(GamePanel gp){
+    public Events(GamePanel gp) {
         this.gp = gp;
-        player = new Player(gp.move,this);
+        player = new Player(gp.move, this);
     }
 
-    public void slimeInter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[5] || til == gp.manager.tile[5]){
+    public void slimeInter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[5] || til == gp.manager.tile[5]) {
             player.encounter(slime);
-            if(player.getHealth() > 0){
+            if (player.getHealth() > 0) {
 
                 System.out.println(gp.check.dir);
 
@@ -69,10 +67,11 @@ public class Events {
 
         }
     }
-    public void skeleInter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[9] || til == gp.manager.tile[9]){
+
+    public void skeleInter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[9] || til == gp.manager.tile[9]) {
             player.encounter(skele);
-            if(player.getHealth() > 0){
+            if (player.getHealth() > 0) {
 
                 System.out.println(gp.check.dir);
 
@@ -101,10 +100,10 @@ public class Events {
         }
     }
 
-    public void ghostInter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[8] || til == gp.manager.tile[8]){
+    public void ghostInter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[8] || til == gp.manager.tile[8]) {
             player.encounter(wraith);
-            if(player.getHealth() > 0){
+            if (player.getHealth() > 0) {
 
                 System.out.println(gp.check.dir);
 
@@ -133,90 +132,28 @@ public class Events {
         }
     }
 
-    public void wayPoint01Inter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[6] || til == gp.manager.tile[6]){
+    public void wayPoint01Inter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[6] || til == gp.manager.tile[6]) {
 
-                currentMap = "2";
-           }
+            currentMap = "2";
+        }
 
     }
 
-    public void wayPoint02Inter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[7] || til == gp.manager.tile[7]){
+    public void wayPoint02Inter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[7] || til == gp.manager.tile[7]) {
 
             currentMap = "3";
         }
 
     }
 
-    public void ghostInter(Tile tile){
-        if(tile == gp.manager.tile[1]){
+    public void ghostInter(Tile tile) {
+        if (tile == gp.manager.tile[1]) {
             player.encounter(wraith);
         }
     }
 
-    public void wayPoint2Inter(Tile tile, Tile til){
-        if(tile == gp.manager.tile[4] || til == gp.manager.tile[4]){
-            System.out.println("WOo");
 
-
-            /*if(x.equals("o")){
-                if(gp.check.til1 == true){
-                    if(gp.check.dir.equals("u")){
-                        gp.manager.mapTile[gp.check.left][gp.check.top] = 0;
-                        currentMap = "2";
-                    }
-                }
-
-                if(gp.check.til2 == true){
-                    if(gp.check.dir.equals("u")){
-                        gp.manager.mapTile[gp.check.right][gp.check.top] = 0;
-                    }
-                }
-
-                if(gp.check.til1 == true){
-                    if(gp.check.dir.equals("d")){
-                        gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
-                    }
-                }
-
-                if(gp.check.til2 == true){
-                    if(gp.check.dir.equals("d")){
-                        gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
-                    }
-                }
-
-                if(gp.check.til1 == true){
-                    if(gp.check.dir.equals("r")){
-                        gp.manager.mapTile[gp.check.right][gp.check.top] = 0;
-                    }
-                }
-
-                if(gp.check.til2 == true){
-                    if(gp.check.dir.equals("r")){
-                        gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
-                    }
-                }
-
-                if(gp.check.til1 == true){
-                    if(gp.check.dir.equals("l")){
-                        gp.manager.mapTile[gp.check.left][gp.check.top] = 0;
-                    }
-                }
-
-                if(gp.check.til2 == true){
-                    if(gp.check.dir.equals("l")){
-                        gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
-                    }
-                }
-
-
-
-
-
-            }
-        */
-
-        }
     }
-}
+

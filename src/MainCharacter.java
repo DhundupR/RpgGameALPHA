@@ -61,7 +61,7 @@ public class MainCharacter {
             gp.event.wayPoint01Inter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
             gp.event.ghostInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
             gp.event.skeleInter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
-            gp.event.wayPoint2Inter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
+            gp.event.wayPoint02Inter(gp.manager.tile[gp.check.tile1], gp.manager.tile[gp.check.tile2]);
 
 
             if (collide == false) {
