@@ -88,7 +88,7 @@ public class Player extends Entity {
     public void battleMob(Entity entity) {
         boolean canHeal=moveRequirementChecker("Slime");
         boolean canBuff = moveRequirementChecker("Bone");
-        boolean canCleanse = moveRequirementChecker("Dark Spirit");
+        boolean canCleanse = moveRequirementChecker("Cleansed Spirit");
         if(entity.getEntityType().equals("slime")) {
             event.battleOn = true;
         }else if(entity.getEntityType().equals("wraith")) {
