@@ -107,7 +107,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 
         else if(event.battleOn3){
-
             g2.drawImage(battleOn3, 0,0,1024,768,null);
         }
 
@@ -133,6 +132,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         else if(event.currentMap.equals("1")) {
             manager.draw(g2);
+
         } else if(event.currentMap.equals("2")){
             manager.loadNewMap("map2.txt");
             manager.draw(g2);

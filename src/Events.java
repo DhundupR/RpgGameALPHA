@@ -17,12 +17,16 @@ public class Events {
     public boolean playerAtkGhost = false;
     public boolean slimePlayerHeal = false;
     public boolean ghostPlayerHeal = false;
-    public boolean skelePlayerHeal = true;
+    public boolean skelePlayerHeal = false;
 
     public boolean skeleAtk = false;
     public boolean playerAtkSkele = false;
 
-    public boolean battleOn3 = true;
+    public boolean battleOn3 = false;
+    public boolean battleOn4 = false;
+
+    Boss bigMan = new Boss(this);
+
 
 
     public Scanner SCAN = new Scanner(System.in);
@@ -105,7 +109,7 @@ public class Events {
             player.encounter(wraith);
             if (player.getHealth() > 0) {
 
-                System.out.println(gp.check.dir);
+
 
                 switch (gp.joe.direction) {
                     case "u":
@@ -148,9 +152,10 @@ public class Events {
 
     }
 
-    public void ghostInter(Tile tile) {
-        if (tile == gp.manager.tile[1]) {
-            player.encounter(wraith);
+    public void finalBossInter(Tile tile, Tile til) {
+        if (tile == gp.manager.tile[15] || til == gp.manager.tile[15]) {
+            player.encounter(bigMan);
+
         }
     }
 

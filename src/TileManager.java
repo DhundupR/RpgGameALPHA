@@ -22,7 +22,7 @@ public class TileManager {
 
     public TileManager(GamePanel gp){
         this.gp = gp;
-        tile =  new Tile[12];
+        tile =  new Tile[16];
         mapTile = new int[gp.maxScreenCol][gp.maxScreenRow];
         loadMap();
         getTileImage();
@@ -131,6 +131,22 @@ public class TileManager {
             tile[11] = new Tile();
             tile[11].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/stoneFloor.png"))));
             tile[11].collision = false;
+
+            tile[12] = new Tile();
+            tile[12].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/stoneFloor02.png"))));
+            tile[12].collision = false;
+
+            tile[13] = new Tile();
+            tile[13].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/stoneFloor03.png"))));
+            tile[13].collision = false;
+
+            tile[14] = new Tile();
+            tile[14].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/stoneFloor04.png"))));
+            tile[14].collision = false;
+
+            tile[15] = new Tile();
+            tile[15].image = (ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/tiles/stoneFloor05.png"))));
+            tile[15].collision = true;
 
 
 

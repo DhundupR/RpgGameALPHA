@@ -42,7 +42,6 @@ public class MainCharacter {
         if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true) {
             if (move.upPressed == true) {
                 direction = "u";
-                System.out.println("Going up");
             } else if (move.downPressed == true) {
                 direction = "d";
 
