@@ -17,7 +17,7 @@ public class Skeleton extends Entity{
         }
     }
     public void mobBattle(Player player){
-        if(getHealth()<(getMaxHealth()/10)) {
+        if(getHealth()<(getMaxHealth()/5)) {
             counter(player);
         }
         else{

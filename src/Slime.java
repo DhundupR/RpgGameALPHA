@@ -22,7 +22,7 @@ public class Slime extends Entity{
             buff();
             System.out.println("Slime buffed");
         }
-        else if(getHealth()<getMaxHealth()/4){
+        else if(getHealth()>getMaxHealth()/3){
             events.slimeAtk = true;
             this.events.gp.repaint();
             events.gp.paintComponent(events.gp.g);
