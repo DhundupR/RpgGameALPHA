@@ -55,11 +55,11 @@ public class Events {
                         gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
                         gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
                         break;
-                    case "r":
+                    case "l":
                         gp.manager.mapTile[gp.check.top][gp.check.left] = 0;
                         gp.manager.mapTile[gp.check.bot][gp.check.left] = 0;
                         break;
-                    case "l":
+                    case "r":
                         gp.manager.mapTile[gp.check.top][gp.check.right] = 0;
                         gp.manager.mapTile[gp.check.bot][gp.check.right] = 0;
                         break;
@@ -138,6 +138,14 @@ public class Events {
 
                 currentMap = "2";
            }
+
+    }
+
+    public void wayPoint02Inter(Tile tile, Tile til){
+        if(tile == gp.manager.tile[7] || til == gp.manager.tile[7]){
+
+            currentMap = "3";
+        }
 
     }
 

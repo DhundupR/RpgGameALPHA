@@ -143,7 +143,7 @@ public class Player extends Entity {
 
         }
         else if(move.basicAttack2 == true){
-            //if(canHeal){
+            if(canHeal){
                 if(entity.getEntityType().equals("slime")) {
                     event.slimePlayerHeal = true;
                 }
@@ -168,11 +168,11 @@ public class Player extends Entity {
                 event.slimePlayerHeal = false;
                  event.ghostPlayerHeal = false;
                  event.skelePlayerHeal = false;
-           // }
-            //else{
+           }
+            else{
                 System.out.println("You haven't unlocked this move yet");
                 battleMob(entity);
-           // }
+            }
         }
         else if(move.basicAttack3== true ){
             if(canBuff){
