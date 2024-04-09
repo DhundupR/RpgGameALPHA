@@ -56,12 +56,12 @@ public class Events {
                         gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
                         break;
                     case "l":
-                        gp.manager.mapTile[gp.check.top][gp.check.left] = 0;
-                        gp.manager.mapTile[gp.check.bot][gp.check.left] = 0;
+                        gp.manager.mapTile[gp.check.left][gp.check.top] = 0;
+                        gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
                         break;
                     case "r":
-                        gp.manager.mapTile[gp.check.top][gp.check.right] = 0;
-                        gp.manager.mapTile[gp.check.bot][gp.check.right] = 0;
+                        gp.manager.mapTile[gp.check.right][gp.check.top] = 0;
+                        gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
                         break;
                 }
 
