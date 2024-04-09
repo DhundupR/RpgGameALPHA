@@ -39,6 +39,7 @@ public class Events {
 
     public boolean phase1Blood = false;
     public boolean phase2Blood = false;
+    public boolean finish = false;
 
     Boss bigMan = new Boss(this);
 
@@ -82,6 +83,8 @@ public class Events {
                         break;
                 }
 
+            } else {
+                finish = true;
             }
 
         }
@@ -114,6 +117,8 @@ public class Events {
                         break;
                 }
 
+            }else {
+                finish = true;
             }
 
         }
@@ -146,6 +151,8 @@ public class Events {
                         break;
                 }
 
+            }else {
+                finish = true;
             }
 
         }
@@ -170,6 +177,8 @@ public class Events {
     public void finalBossInter(Tile tile, Tile til) {
         if (tile == gp.manager.tile[15] || til == gp.manager.tile[15]) {
             player.encounter(bigMan);
+
+            finish = true;
 
         }
     }

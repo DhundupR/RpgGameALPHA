@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenHeight = tileSize * maxScreenRow;
     public BufferedImage battleOn4Phase1, battleOn4Phase2, battleOn1, playerAttack, slimeAttack, playerAtkGhost, ghostAtk,battleOn2, slimePlayerHeal, battleOn3,playerAtkSkele,skeleAtk,playerHealSkele, ghostHeal;
     public BufferedImage phase1PlayerAtk, phase2PlayerAtk, phase1Atk, phase2Atk, phase1Regen, phase2Regen, phase1Heal,phase2Heal;
-    public BufferedImage phase1Blood, phase2Blood;
+    public BufferedImage phase1Blood, phase2Blood, finish;
     public CollisionSys check;
 
 
@@ -83,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
             phase2Heal =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Heal.png")));
             phase1Blood =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase1Blood.png")));
             phase2Blood =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/phase2Blood.png")));
+            finish =ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("src/finish.png")));
         } catch (Exception e){
 
         }
@@ -104,7 +105,11 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g); //parent class is gamePlanner
         this.g = g;
          g2 = (Graphics2D) g; //extension of graphic (has special functions)
-        if(event.skelePlayerHeal){
+        if(event.finish){
+            g2.drawImage(finish, 0,0,1024,768,null);
+        }
+
+        else if(event.skelePlayerHeal){
             g2.drawImage(playerHealSkele, 0,0,1024,768,null);
         }else if(event.phase2Heal){
             g2.drawImage(phase2Heal, 0,0,1024,768,null);
