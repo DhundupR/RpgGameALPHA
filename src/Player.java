@@ -97,6 +97,8 @@ public class Player extends Entity {
         }else if(entity.getEntityType().equals("skeleton")) {
             event.battleOn3 = true;
 
+        } else {
+
         }
 
 
@@ -148,10 +150,10 @@ public class Player extends Entity {
                 if(entity.getEntityType().equals("slime")) {
                     event.slimePlayerHeal = true;
                 }
-            if(entity.getEntityType().equals("wraith")) {
+                if(entity.getEntityType().equals("wraith")) {
                 event.ghostPlayerHeal = true;
-            }
-            if(entity.getEntityType().equals("skeleton")) {
+                }
+                if(entity.getEntityType().equals("skeleton")) {
                 event.skelePlayerHeal = true;
             }
                 event.gp.repaint();
@@ -216,6 +218,8 @@ public class Player extends Entity {
             event.battleOn2 = true;
         } else if (entity.getEntityType().equals("skeleton")) {
             event.battleOn3 = true;
+        } else {
+
         }
         setpHealth(getMaxHealth());
         setpAtk(getAtk());

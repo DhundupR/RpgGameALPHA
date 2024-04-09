@@ -1,6 +1,8 @@
 public class Skeleton extends Entity{
+    public Events events;
     public Skeleton(Events eve){
         super(50,5,100,"Bone","skeleton");
+        this.events = eve;
     }
     public void counter(Player player) {
         int counterChance = 50;
@@ -19,9 +21,18 @@ public class Skeleton extends Entity{
             counter(player);
         }
         else{
+            events.skeleAtk = true;
+            this.events.gp.repaint();
+            try {
+                Thread.sleep(2 * 1000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             int atk = baseAttack();
             player.damageTaken(atk);
             System.out.println("Skeleton used basic attack and dealt" + atk + "damage");
+            events.skeleAtk = false;
         }
     }
 }

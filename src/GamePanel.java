@@ -107,10 +107,11 @@ public class GamePanel extends JPanel implements Runnable {
 
 
         else if(event.battleOn3){
+
             g2.drawImage(battleOn3, 0,0,1024,768,null);
         }
 
-        if(event.ghostAtk){
+        else if(event.ghostAtk){
             g2.drawImage(ghostAtk, 0,0,1024,768,null);
         }
         else if(event.slimePlayerHeal){

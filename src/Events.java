@@ -17,12 +17,12 @@ public class Events {
     public boolean playerAtkGhost = false;
     public boolean slimePlayerHeal = false;
     public boolean ghostPlayerHeal = false;
-    public boolean skelePlayerHeal = false;
+    public boolean skelePlayerHeal = true;
 
     public boolean skeleAtk = false;
     public boolean playerAtkSkele = false;
 
-    public boolean battleOn3 = false;
+    public boolean battleOn3 = true;
 
 
     public Scanner SCAN = new Scanner(System.in);
@@ -85,13 +85,13 @@ public class Events {
                         gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
                         gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
                         break;
-                    case "r":
-                        gp.manager.mapTile[gp.check.top][gp.check.left] = 0;
-                        gp.manager.mapTile[gp.check.bot][gp.check.left] = 0;
-                        break;
                     case "l":
-                        gp.manager.mapTile[gp.check.top][gp.check.right] = 0;
-                        gp.manager.mapTile[gp.check.bot][gp.check.right] = 0;
+                        gp.manager.mapTile[gp.check.left][gp.check.top] = 0;
+                        gp.manager.mapTile[gp.check.left][gp.check.bot] = 0;
+                        break;
+                    case "r":
+                        gp.manager.mapTile[gp.check.right][gp.check.top] = 0;
+                        gp.manager.mapTile[gp.check.right][gp.check.bot] = 0;
                         break;
                 }
 
