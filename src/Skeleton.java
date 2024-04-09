@@ -16,6 +16,7 @@ public class Skeleton extends Entity{
             System.out.println("Skeleton counter attempt failed");
         }
     }
+    @Override
     public void mobBattle(Player player){
         if(getHealth()<(getMaxHealth()/5)) {
             counter(player);

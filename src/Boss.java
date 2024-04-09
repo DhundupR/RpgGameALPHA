@@ -51,6 +51,7 @@ public class Boss extends Entity {
             setHealth(getMaxHealth());
         }
     }
+    @Override
     public void mobBattle(Player player){
         if((getHealth()>getMaxHealth()*0.8)&&(getMaxHealth()<2500)){
             buff();
