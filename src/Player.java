@@ -57,7 +57,7 @@ public class Player extends Entity {
             setAtk((getAtk()) + level * 5);
             level++;
             levelUpRequirement *= 2;
-            System.out.println("You leveled up to level" + level);
+            System.out.println("You leveled up to level " + level);
             stat();
         }
     }
