@@ -39,6 +39,11 @@ public class Entity {
 
     }
 
+    public void setPhase2(){
+         phase2 = true;
+
+    }
+
 
     public String getDrop(){
         return drop;

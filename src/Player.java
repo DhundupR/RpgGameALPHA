@@ -18,7 +18,7 @@ public class Player extends Entity {
     String direction = " ";
 
     public Player(Movement move,Events eve) {
-        super(100, 5000, 10);
+        super(1, 5000, 10);
         this.pHealth = getMaxHealth();
         this.pAtk = getAtk();
         this.killCount = 0;
@@ -285,6 +285,7 @@ public class Player extends Entity {
 
             System.out.println("The boss has awaken its true power");
             System.out.println("Phase 2 beginning");
+            entity.setPhase2();
             entity.setMaxHealth(500);
             entity.setAtk(50);
             entity.setHealth(500);
