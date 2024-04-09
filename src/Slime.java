@@ -2,7 +2,7 @@ public class Slime extends Entity{
     public Events events;
 
     public Slime(Events eve){
-        super(50,1,100,"Slime","slime");
+        super(20,5,100,"Slime","slime");
         this.events = eve;
     }
 
@@ -11,8 +11,8 @@ public class Slime extends Entity{
         setMaxHealth(getMaxHealth()*2);
     }
     public void regen(){
-        System.out.println("Slime regened " + (getMaxHealth()-getHealth()/2) + "hp");
-        setHealth(getHealth()+(getMaxHealth()-getHealth()/2));
+        System.out.println("Slime regened " + (getHealth()/2) + " hp");
+        setHealth(getHealth()+(getHealth()/2));
         if (getHealth()>getMaxHealth()){
             setHealth(getMaxHealth());
         }

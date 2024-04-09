@@ -18,7 +18,7 @@ public class Player extends Entity {
     String direction = " ";
 
     public Player(Movement move,Events eve) {
-        super(100, 5, 10);
+        super(100, 10, 20);
         this.pHealth = getMaxHealth();
         this.pAtk = getAtk();
         this.killCount = 0;
