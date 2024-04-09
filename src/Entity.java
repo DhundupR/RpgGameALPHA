@@ -81,8 +81,14 @@ public class Entity {
         }
     }
 
-    public void mobBattle(Player player){}
-    public void bossBattle(Player player){}
+    public void mobBattle(Player player){
+        int damage = baseAttack();
+        player.damageTaken(damage);
+    }
+    public void bossBattle(Player player){
+        int damage = baseAttack();
+        player.damageTaken(damage);
+    }
     public void mobDrop(Player player,Entity entity){
         if((Math.random()*100)+1>=20){
             System.out.println("You got " + entity.getDrop());

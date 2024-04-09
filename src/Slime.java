@@ -17,6 +17,7 @@ public class Slime extends Entity{
             setHealth(getMaxHealth());
         }
     }
+    @Override
     public void mobBattle(Player player){
         if((getHealth()>getHealth()/2)&&(getMaxHealth()<500)){
             buff();
